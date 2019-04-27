@@ -12,11 +12,13 @@ class Home extends Component{
      }
   }
   goToRegister(){
-     console.log('u r visiting the register page..')
+     //console.log('u r visiting the register page..')
+     this.props.navigation.navigate('Register')
   }
 
   goToLogin(){
-    console.log('u r visiting the login page')
+    //console.log('u r visiting the login page')
+    this.props.navigation.navigate('Login')
   }
 
   //////////////////////
@@ -36,13 +38,13 @@ class Home extends Component{
                       backgroundColor='#03A9F4'
                       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                       title='Register As AGENT' 
-                     onClick = {this.goToRegister.bind(this)}/>
+                     onPress = {this.goToRegister.bind(this)}/>
                   <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
                       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                       title='LOGIN ' 
-                     onClick = {this.goToLogin.bind(this)}/>
+                     onPress = {this.goToLogin.bind(this)}/>
                 </Card>
          </View>
        )
