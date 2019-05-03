@@ -1,60 +1,88 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, Alert, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
+import t from 'tcomb-form-native'
+
+const Form = t.form.Form
+
+//Enums are displayed as Picker s.
+ const Gender = t.enums({
+   'M': 'Male',
+   'F': 'Female'
+ })
+
+
+//// here we are: define your domain model
+const Agent = t.struct({
+    firstName: t.String,//required string
+    lastName: t.String,
+    phoneNumber: t.Number,
+    email: t.maybe(t.String), //optional field
+    NationalIDNumber: t.String,
+    //gender: t.String, //select box... male or female
+    gender: Gender, //displayed as picker
+    password: t.String,
+    date_of_birth: t.Date
+})
+
+//Under Android, use the fields option to configure which mode
+// to display the Picker: --> date or time picker
+let options = {
+  fields: {
+    date_of_birth:{
+      mode: 'date' //// display the Date field as a DatePickerAndroid
+    }
+  }
+} // optional rendering options (see documentation)
 
 class Register extends Component{
     constructor(props){
         super(props)
         this.state = {
           loggedIn: false,
-          username: ''
+          username: '',
+          value: {
+             firstName: '',
+             lastName: '',
+             email: '',
+             password: '',
+             phoneNumber: '', //what is default for number
+             NationalIDNumber: ''
+
+          }
         }
      }
 
-     registerAgent(e){
-         e.preventDefault()
-        //console.log(this.state.username)
-        alert(this.state.username)
+     registerAgent(){
+       // call getValue() to get the values of the form
+       let value = this.refs.registerForm.getValue()
+       if (value) { // if validation fails, value will be null
+        console.log(value); // value here is an instance of Agent
+       }
      }
 
+     
      /*handleInputText(e){
-          const {name, value} = e.target
-          this.setState()
-     }*/
-     handleInputText(e){
          const {name, value} = e.target
          this.setState({[name]: value})
+     }*/
+     handleChange(value){
+        this.setState({value})
      }
+
 
      ///////////////////
      render(){
          return(
              <View>
                 <Card  title = "REGISTER AS AGENT">
-                <Input  placeholder='Enter firstName'
-                        label = 'First Name'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
-                <Input  placeholder='Enter Last Name'
-                        label = 'Last Name'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
-                <Input  placeholder='Enter phone number'
-                        label = 'Phone Number'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
-                <Input  
-                        label = 'Email address'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
-                <Input  
-                        label = 'National ID Number (NIN)'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
-                <Input  
-                        label = 'Password'
-                        onChangeText = {this.handleInputText.bind.this}
-                    />
+                   <Form
+                      ref = "registerForm"
+                      type= {Agent}
+                      options = {options}
+                      value= {this.state.value}
+                      onChange = {this.handleChange}
+                     /> 
                    <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
