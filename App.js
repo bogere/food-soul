@@ -12,9 +12,9 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 import HomeScreen from './screens/home'
 import LoginScreen from './screens/login'
-import RegisterScreen from './screens/register'
+import RegisterScreen from './screens/registerTest'
 
-import DashboardScreen from './screens/dashboard';
+import DashboardScreen from './screens/dashboard3';
 
 
 

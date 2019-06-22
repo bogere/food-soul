@@ -19,7 +19,6 @@ const Agent = t.struct({
     phoneNumber: t.Number,
     email: t.maybe(t.String), //optional field
     NationalIDNumber: t.String,
-    //gender: t.String, //select box... male or female
     gender: Gender, //displayed as picker
     password: t.String,
     date_of_birth: t.Date
@@ -47,7 +46,8 @@ class Register extends Component{
              email: '',
              password: '',
              phoneNumber: '', //what is default for number
-             NationalIDNumber: ''
+             NationalIDNumber: '',
+             gender: ''
 
           }
         }
@@ -55,9 +55,11 @@ class Register extends Component{
 
      registerAgent(){
        // call getValue() to get the values of the form
-       let value = this.refs.registerForm.getValue()
+        let value = this.refs.registerForm.getValue()
+       //let value = this.formRef.getvalue()
        if (value) { // if validation fails, value will be null
-        console.log(value); // value here is an instance of Agent
+        //console.log(value); // value here is an instance of Agent
+        Alert('yeah u have submitted!!!')
        }
      }
 
@@ -66,6 +68,7 @@ class Register extends Component{
          const {name, value} = e.target
          this.setState({[name]: value})
      }*/
+
      handleChange(value){
         this.setState({value})
      }
@@ -74,15 +77,12 @@ class Register extends Component{
      ///////////////////
      render(){
          return(
-             <View>
+             <ScrollView>
                 <Card  title = "REGISTER AS AGENT">
-                   <Form
-                      ref = "registerForm"
-                      type= {Agent}
-                      options = {options}
-                      value= {this.state.value}
-                      onChange = {this.handleChange}
-                     /> 
+                <Form ref= "registerForm"
+                       type={ Agent} 
+                       options={options}
+                     />
                    <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
@@ -90,7 +90,7 @@ class Register extends Component{
                       title='REGISTER ' 
                      onPress = {this.registerAgent.bind(this)}/>
                 </Card>
-             </View>
+             </ScrollView>
          )
      }
 }

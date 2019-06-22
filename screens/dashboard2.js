@@ -1,9 +1,7 @@
-//implementing the sidemenu.. on the react native..
-//dashboard part--> Add the customers n other details
-
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
-import { SideMenu, List, ListItem, Icon} from 'react-native-elements'
+import {  List, ListItem, Icon} from 'react-native-elements'
+import {createDrawerNavigator} from 'react-navigation';
 
 //u shall have to define ur list items.
 const list = [
@@ -57,15 +55,16 @@ class Dashboard extends Component{
 
      //actually displaying the items.
       return (
-          <SideMenu isOpen= {this.state.isOpen} menu= {MenuComponent}>
+          
               <Icon  raised  name='heartbeat'
                       type='font-awesome'  color='#f50'
                       onPress={this.toggleSideMenu.bind(this)}
                  />
-          </SideMenu>
       )
     }
 }
+
+//define other classes.
 
 
 
