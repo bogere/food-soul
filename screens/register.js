@@ -64,10 +64,6 @@ class Register extends Component{
      }
 
      
-     /*handleInputText(e){
-         const {name, value} = e.target
-         this.setState({[name]: value})
-     }*/
 
      handleChange(value){
         this.setState({value})
