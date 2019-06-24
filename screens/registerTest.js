@@ -38,6 +38,9 @@ let options = {
             error: 'password is empty',
             secureTextEntry: true,
             password: true
+      },
+      gender:{ //remove it if it causes issues for u..
+        nullOptions: {value : '', text: 'Choose your gender'}
       }
     }
   } // optional rendering options (see documentation)
