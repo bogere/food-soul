@@ -17,10 +17,13 @@ class DashboardScreen extends Component {
   
     render() {
       return (
+       <View>
         <Button
           onPress={() => this.props.navigation.navigate('Notifications')}
           title="Go to notifications"
         />
+        <Text>hello wait for food soul</Text>
+       </View>
       );
     }
   }

@@ -2,41 +2,55 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 import t from 'tcomb-form-native'
+import CustomerList from './customerList';
+import NewCustomer from './addCustomer'
 
 const users = [
     {
        name: 'brynn',
-       avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+       avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
+       subtitle: 'President',
+       email: 'goldsoft@gmail.com'
     },
-    ... // more users here
+    {
+      name: 'Chris Jackson',
+      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+      subtitle: 'Vice Chairman',
+      email: 'yyyyy@gmail.com'
+    },
+    {
+      name: 'Amy Farha',
+      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+      subtitle: 'Vice President',
+      email: 'xxxxxx@gmail.com'
+    }
    ]
 
 
-class CustomerList extends Component{
+class Customer extends Component{
+    
+   constructor(props){
+      super(props)
+      this.state = {
+         newCustomerForm: false
+      }
+   }
+   ///////////////////
     render(){
         return (
           <View>
-            <Header
+             <Header
                leftComponent={{ icon: 'menu', color: '#fff' }}
                centerComponent={{ text: 'SOUL FOOD', style: { color: '#fff' } }}
                rightComponent={{ icon: 'home', color: '#fff' }}
              />
-             <Card title="Customer List">
-                {
-                users.map((u, i) => {
-                  return (
-                     <View key={i} style={styles.user}>
-                       <Image
-                           style={styles.image}
-                           resizeMode="cover"
-                           source={{ uri: u.avatar }}
-                        />
-                        <Text style={styles.name}>{u.name}</Text>
-                     </View>
-                    );
-                 })
+             {
+                this.state.newCustomerForm ?
+                  <NewCustomer/>
+                 :
+                 <CustomerList users = {users} />
                }
-          </Card>
+             
            </View>
 
              
@@ -44,4 +58,4 @@ class CustomerList extends Component{
     }
 }
 
-export default  CustomerList
+export default  Customer

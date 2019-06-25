@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
+import { Card, Button, Icon,Input, Header} from 'react-native-elements'
 
-export default class JustifyContentBasics extends Component {
+export default class Dashboard extends Component {
 
     constructor(props){
         super(props)
@@ -13,11 +14,11 @@ export default class JustifyContentBasics extends Component {
     }
      
     goToCustomers(){
-        this.props.navigation.navigate('customers')
+        this.props.navigation.navigate('Customers')
     }
 
     goToOrders(){
-        this.props.navigation.navigate('orders')
+        this.props.navigation.navigate('Orders')
     }
 
     //////////////////////////////////////
@@ -31,26 +32,12 @@ export default class JustifyContentBasics extends Component {
       // Try setting `justifyContent` to `center`.
       // Try setting `flexDirection` to `row`.
     <View>
-      <View style = {styles.container}>
-        <View style={{width: 80, height: 100, backgroundColor: 'powderblue'}}>
-          <Image source={pic} style={{width: 50, height: 50}} onPress = {this.goToCustomers} />
-          <Text>Customers</Text>  
-        </View>
-        <View style={{width: 80, height: 100, backgroundColor: 'powderblue'}}>
-          <Image source={pic} style={{width: 50, height: 50}} onPress = {this.goToOrders}/>
-          <Text>Orders</Text>  
-        </View>
-      </View>
-      <View  style = {styles.container}>
-        <View style={{width: 80, height: 100, backgroundColor: 'powderblue'}}>
-          <Image source={pic} style={{width: 50, height: 50}}/>
-          <Text>Customers</Text>  
-        </View>
-        <View style={{width: 80, height: 100, backgroundColor: 'powderblue'}}>
-          <Image source={pic} style={{width: 50, height: 50}}/>
-          <Text>Orders</Text>  
-        </View>
-      </View>
+        <Button
+             icon={<Icon name='code' color='#ffffff' />}
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              title='Customers' 
+               onPress = {this.goToCustomers}/>
     </View>
       
       
