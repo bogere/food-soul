@@ -53,7 +53,7 @@ class Customer extends Component{
    }
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
-      //this.props.navigation.navigate('SingleCustomer', item)
+      this.props.navigation.navigate('SingleCustomer', {item})
    }
    ///////////////////
     render(){
