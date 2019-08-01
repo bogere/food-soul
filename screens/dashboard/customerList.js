@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text, View,Image} from 'react-native';
+import {Platform, StyleSheet,Text, View,Image,TouchableHighlight} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 
 class CustomerList extends Component{
     render(){
         return (
             <Card title="Customer List">
-                {
+              {
                 this.props.users.map((u, i) => {
                   return (
                     <View key={i} style={styles.user}>
@@ -17,10 +17,19 @@ class CustomerList extends Component{
                         />
                        <Text style={styles.name}>{u.name}</Text>
                        <Text style={styles.name}>{u.email}</Text>
+                       <TouchableHighlight style={styles.button} onPress={()=>this.props.seeCustomerItem(u)} underlayColor='#99d9f4'>
+                          <Text style={styles.buttonText}>View</Text>
+                       </TouchableHighlight>
                      </View>
                     );
                  })
                }
+             <Button
+                     icon={<Icon name='code' color='#ffffff' />}
+                      backgroundColor='#03A9F4'
+                      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                      title='Add Customer' 
+                      onPress = {this.props.showForm}/>
           </Card>
         )
     }
@@ -31,12 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  /*list: {
-    marginTop: 20,
-    borderTopWidth: 1,
-    borderColor: colors.greyOutline,
-    backgroundColor: '#fff',
-  },*/
+  
   headerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -84,6 +88,21 @@ const styles = StyleSheet.create({
   ratingText: {
     paddingLeft: 10,
     color: 'grey',
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
   }
 });
 

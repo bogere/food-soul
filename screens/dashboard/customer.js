@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
-import t from 'tcomb-form-native'
+//import t from 'tcomb-form-native'
 import CustomerList from './customerList';
 import NewCustomer from './addCustomer'
 
@@ -21,8 +21,8 @@ const users = [
     {
       name: 'Amy Farha',
       avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'Vice President',
-      email: 'xxxxxx@gmail.com'
+      subtitle: 'President',
+      email: 'xxxxVVVV@yahoo.com'
     }
    ]
 
@@ -34,6 +34,26 @@ class Customer extends Component{
       this.state = {
          newCustomerForm: false
       }
+      //bind the fucntions in the constructor instead of render method.. optimisation.
+      this.showCustomerForm = this.showCustomerForm.bind(this)
+      this.hideCustomerForm = this.hideCustomerForm.bind(this)
+      this.navigateCustomerItem = this.navigateCustomerItem.bind(this)
+   }
+
+   showCustomerForm(){
+      this.setState({
+         newCustomerForm: true
+      })
+   }
+   hideCustomerForm(){
+      this.setState({
+         newCustomerForm: false
+      })
+      console.log('hey hide the customer form')
+   }
+   navigateCustomerItem(item){
+      console.log('let see specific customer', item)
+      //this.props.navigation.navigate('SingleCustomer', item)
    }
    ///////////////////
     render(){
@@ -46,9 +66,15 @@ class Customer extends Component{
              />
              {
                 this.state.newCustomerForm ?
-                  <NewCustomer/>
+                  <NewCustomer 
+                     hideForm = {this.hideCustomerForm}
+                  />
                  :
-                 <CustomerList users = {users} />
+                 <CustomerList 
+                     users = {users}
+                     showForm = {this.showCustomerForm}
+                     seeCustomerItem = {this.navigateCustomerItem}
+                   />
                }
              
            </View>

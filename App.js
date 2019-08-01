@@ -18,44 +18,17 @@ import DashboardScreen from './screens/dashboard/dashboard4';
 
 //u shall put seperator navigation for dashboard.
 import CustomerScreen from './screens/dashboard/customer';
+import SingleCustomer from './components/singleCustomer';
+
 //import OrderScreen from './screens/dashboard/order'
 
 
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-
-//catering for react navigation..
-/*const MainNavigator = createStackNavigator({
-  Home: {screen: HomeScreen},
-  Login : {screen: LoginScreen},
-  Register : {screen: RegisterScreen},
-  Dashboard: {screen: DashboardScreen} 
-})*/
-
-//const App = createAppContainer(MainNavigator)//create app container to wrap the root navigator
-
-
-/*class App extends Component{
-  render(){
-    return (
-      <View>
-        <Text>Hello react navigation XXXXXXX</Text>
-      </View>
-    )
-  }
-}*/
-//export default App
 export default createStackNavigator({
   Home: {screen: HomeScreen},
   Login : {screen: LoginScreen},
   Register : {screen: RegisterScreen},
   Dashboard: {screen: DashboardScreen},
-  Customers: {screen: CustomerScreen}
+  Customers: {screen: CustomerScreen},
+  SingleCustomer: {screen:SingleCustomer}
   //Orders: {screen: OrderScreen} 
 })

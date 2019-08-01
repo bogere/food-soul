@@ -15,10 +15,12 @@ export default class Dashboard extends Component {
      
     goToCustomers(){
         this.props.navigation.navigate('Customers')
+        //console.log('ready to roll to customers page')
     }
 
     goToOrders(){
-        this.props.navigation.navigate('Orders')
+        //this.props.navigation.navigate('Orders')
+        console.log('hey i want to see the orders')
     }
 
     //////////////////////////////////////

@@ -11,7 +11,7 @@ const Customer = t.struct({
    firstName: t.String,
    lastName: t.String,
    email: t.maybe(t.String),
-   phone : t.Number()
+   phone : t.Number
 })
 
 const options = {
@@ -45,13 +45,15 @@ class NewCustomer extends Component{
       if (value) {
          console.log('submit customer', value)   
       }
+      //later hide the customer form.
+      this.props.hideForm
     }
 
     /////////////////////
     render(){
         return(
             <View>
-               <Card  title = "ADD NEW CUSTOMER">
+               <Card  title = "NEW CUSTOMER">
                   <Form ref = "myForm"
                      type = {Customer}
                      options = {options}
