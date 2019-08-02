@@ -15,7 +15,7 @@ class singleCustomer extends Component{
             <Card title="Customer Detail">
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-               <Text>{params.item.name}</Text>
+               <Text style = {styles.nameHeader}>{params.item.name}</Text>
                <Image 
                  source = {{
                    uri :'https://static.pexels.com/photos/428336/pexels-photo-428336.jpeg',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   nameHeader: {
-    color: 'white',
+    color: 'black',
     fontSize: 22,
     textAlign: 'center',
   },
