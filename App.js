@@ -8,7 +8,6 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-//import {createStackNavigator,createAppContainer} from 'react-navigation';//v3
 import {createStackNavigator} from 'react-navigation';
 import HomeScreen from './screens/home'
 import LoginScreen from './screens/login'
