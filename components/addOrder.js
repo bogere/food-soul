@@ -45,7 +45,7 @@ class AddOrder extends Component{
        super(props)
        this.state = {
           value: {
-              status: '',
+              status: 'approved',
               agent_id: '',
               customer_id: '',
               supplier_id: ''
