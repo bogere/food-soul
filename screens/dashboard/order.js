@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 //import t from 'tcomb-form-native'
-import CustomerList from '../../components/customerList';
+import OrderList from '../../components/orderList';
 import NewOrder from '../../components/addOrder';
 
 const users = [
@@ -37,7 +37,7 @@ class Order extends Component{
       //bind the fucntions in the constructor instead of render method.. optimisation.
       this.showOrderForm = this.showOrderForm.bind(this)
       this.hideOrderForm = this.hideOrderForm.bind(this)
-      this.navigateCustomerItem = this.navigateCustomerItem.bind(this)
+      this.navigateOrderItem = this.navigateOrderItem.bind(this)
    }
 
    showOrderForm(){
@@ -49,11 +49,9 @@ class Order extends Component{
       this.setState({
          newOrderForm: false
       })
-      console.log('hey hide the customer form')
    }
-   navigateCustomerItem(item){
-      console.log('let see specific customer', item)
-      this.props.navigation.navigate('SingleCustomer', {item})
+   navigateOrderItem(item){
+      this.props.navigation.navigate('SingleOrder', {item})
    }
    ///////////////////
     render(){
@@ -70,10 +68,10 @@ class Order extends Component{
                      hideForm = {this.hideOrderForm}
                   />
                  :
-                 <CustomerList 
+                 <OrderList 
                      users = {users}
                      showForm = {this.showOrderForm}
-                     seeCustomerItem = {this.navigateCustomerItem}
+                     seeOrderItem = {this.navigateOrderItem}
                    />
                }
              

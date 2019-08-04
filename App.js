@@ -20,6 +20,7 @@ import CustomerScreen from './screens/dashboard/customer';
 import SingleCustomer from './components/singleCustomer';
 
 import OrderScreen from './screens/dashboard/order'
+import SingleOrder from './components/singleOrder'
 
 
 export default createStackNavigator({
@@ -29,5 +30,6 @@ export default createStackNavigator({
   Dashboard: {screen: DashboardScreen},
   Customers: {screen: CustomerScreen},
   SingleCustomer: {screen:SingleCustomer},
-  Orders: {screen: OrderScreen} 
+  Orders: {screen: OrderScreen},
+  SingleOrder:{screen: SingleOrder}
 })
