@@ -19,7 +19,7 @@ import DashboardScreen from './screens/dashboard/dashboard4';
 import CustomerScreen from './screens/dashboard/customer';
 import SingleCustomer from './components/singleCustomer';
 
-//import OrderScreen from './screens/dashboard/order'
+import OrderScreen from './screens/dashboard/order'
 
 
 export default createStackNavigator({
@@ -28,6 +28,6 @@ export default createStackNavigator({
   Register : {screen: RegisterScreen},
   Dashboard: {screen: DashboardScreen},
   Customers: {screen: CustomerScreen},
-  SingleCustomer: {screen:SingleCustomer}
-  //Orders: {screen: OrderScreen} 
+  SingleCustomer: {screen:SingleCustomer},
+  Orders: {screen: OrderScreen} 
 })

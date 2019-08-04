@@ -14,12 +14,31 @@ const OrderStatus = t.enums({
 })
 //define the domain models for ur form..
 const OrderModel = t.struct({
-    //status: t.String, //pending, approved /select box
-    status: OrderStatus,//enum
-    agent_id: t.String, //reference 
     customer_id: t.String, //reference to customer
+    status: OrderStatus,//enum
+    //agent_id: t.String, //reference 
     supplier_id: t.String //reference to supplier
 })
+
+const options = {
+    fields:{
+        customer_id:{
+            label: 'Customer',
+            placeholder: 'Select the customer',
+            error: 'Customer field is required'
+        },
+        status:{
+            label: 'Order Status',
+            placeholder: 'Select the status of order',
+            error: 'Order Status is required'
+        },
+        supplier_id:{
+            label: 'Suppplier',
+            placeholder: 'Select the supplier',
+            error: 'Supplier is required'
+        }
+    }
+}
 
 class AddOrder extends Component{
     constructor(props){
@@ -32,6 +51,9 @@ class AddOrder extends Component{
               supplier_id: ''
           }
        }
+       //bind functions inside constructor .. optimisation purposes.
+       this.submitOrder = this.submitOrder.bind(this)
+       this.handleChange = this.handleChange.bind(this)
     }
 
 
@@ -56,6 +78,7 @@ class AddOrder extends Component{
                 <Form
                    ref = "OrderForm"
                    type = {OrderModel}
+                   options = {options}
                    value = {this.state.value}
                    onChange = {this.handleChange} 
                  />
@@ -64,7 +87,7 @@ class AddOrder extends Component{
                       backgroundColor='#03A9F4'
                       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                       title='ADD ORDER' 
-                     onPress = {this.submitOrder.bind(this)}/>
+                     onPress = {this.submitOrder}/>
               </Card>
           </View>
       )

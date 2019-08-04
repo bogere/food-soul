@@ -3,7 +3,7 @@ import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 //import t from 'tcomb-form-native'
 import CustomerList from '../../components/customerList';
-import NewCustomer from './addCustomer'
+import NewCustomer from '../../components/addCustomer'
 
 const users = [
     {

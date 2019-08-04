@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
-import { Card, Button, Icon,Input, Header} from 'react-native-elements'
+import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
 
 export default class Dashboard extends Component {
 
@@ -15,12 +15,10 @@ export default class Dashboard extends Component {
      
     goToCustomers(){
         this.props.navigation.navigate('Customers')
-        //console.log('ready to roll to customers page')
     }
 
     goToOrders(){
-        //this.props.navigation.navigate('Orders')
-        console.log('hey i want to see the orders')
+        this.props.navigation.navigate('Orders')
     }
 
     //////////////////////////////////////
@@ -40,6 +38,13 @@ export default class Dashboard extends Component {
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
               title='Customers' 
                onPress = {this.goToCustomers}/>
+               <Divider style={{ backgroundColor: 'blue' }} />
+          <Button
+             icon={<Icon name='code' color='#ffffff' />}
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              title='Orders' 
+               onPress = {this.goToOrders}/>
     </View>
       
       

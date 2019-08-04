@@ -10,7 +10,7 @@ const IMAGE_SIZE = SCREEN_WIDTH - 80;
 class singleCustomer extends Component{
     render(){
         const {params} = this.props.navigation.state
-        console.log('hey passed', params) //item
+
         return(
             <Card title="Customer Detail">
 
