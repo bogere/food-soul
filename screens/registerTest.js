@@ -49,7 +49,7 @@ let options = {
    constructor(props){
        super(props)
        this.state = {
-
+         
        }
        //It's better to move it outside the render to avoid binding each time the component renders.
        this.onPress = this.onPress.bind(this)
