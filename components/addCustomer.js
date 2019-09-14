@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text,ScrollView,TouchableHighlight,Alert, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
+import {addCustomer} from '../services/customers'
 
 
 const Form = t.form.Form
@@ -43,8 +44,16 @@ class NewCustomer extends Component{
       e.preventDefault()
       const value = this.refs.myForm.getValue();
       if (value) {
-         console.log('submit customer', value)   
+         //console.log('submit customer to form', value)   
       }
+
+      addCustomer(value)
+        .then(result=>{
+             console.log(result)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
       //later hide the customer form.
       this.props.hideForm
     }

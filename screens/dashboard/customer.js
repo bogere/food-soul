@@ -4,6 +4,7 @@ import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements
 //import t from 'tcomb-form-native'
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
+import {loadCustomers} from '../../services/customers'
 
 const users = [
     {
@@ -38,6 +39,16 @@ class Customer extends Component{
       this.showCustomerForm = this.showCustomerForm.bind(this)
       this.hideCustomerForm = this.hideCustomerForm.bind(this)
       this.navigateCustomerItem = this.navigateCustomerItem.bind(this)
+   }
+
+   componentDidMount(){
+         loadCustomers()
+           .then(result=>{
+                console.log(result)
+           })
+           .catch(err=>{
+             console.log(err)
+           })
    }
 
    showCustomerForm(){
