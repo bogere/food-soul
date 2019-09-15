@@ -1,31 +1,12 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text, View} from 'react-native';
+import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 //import t from 'tcomb-form-native'
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
 import {loadCustomers} from '../../services/customers'
 
-const users = [
-    {
-       name: 'brynn',
-       avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-       subtitle: 'President',
-       email: 'goldsoft@gmail.com'
-    },
-    {
-      name: 'Chris Jackson',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman',
-      email: 'yyyyy@gmail.com'
-    },
-    {
-      name: 'Amy Farha',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'President',
-      email: 'xxxxVVVV@yahoo.com'
-    }
-   ]
+
 
 
 class Customer extends Component{
@@ -33,7 +14,8 @@ class Customer extends Component{
    constructor(props){
       super(props)
       this.state = {
-         newCustomerForm: false
+         newCustomerForm: false,
+         customers:[]
       }
       //bind the fucntions in the constructor instead of render method.. optimisation.
       this.showCustomerForm = this.showCustomerForm.bind(this)
@@ -45,6 +27,9 @@ class Customer extends Component{
          loadCustomers()
            .then(result=>{
                 console.log(result)
+                this.setState({
+                   customers:result.customers
+                })
            })
            .catch(err=>{
              console.log(err)
@@ -82,7 +67,7 @@ class Customer extends Component{
                   />
                  :
                  <CustomerList 
-                     users = {users}
+                     users = {this.state.customers}
                      showForm = {this.showCustomerForm}
                      seeCustomerItem = {this.navigateCustomerItem}
                    />

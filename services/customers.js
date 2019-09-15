@@ -1,10 +1,10 @@
 
-//const ROOT_URL =   `http://104.238.158.44:3010`
-const ROOT_URL = `http://192.168.8.100:4000`
+const ROOT_URL = `http://192.168.8.100:4000` //use server IP address not localhost 
+//becoz localhost refers to android device in which code runs
 
 
 export function loadCustomers(agentId){
-    return fetch(`http://localhost:4000/participants/1234`)
+    return fetch(`${ROOT_URL}/customers`)
                .then(res=>res.json())
 
 }
