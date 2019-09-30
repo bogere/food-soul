@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
-//import t from 'tcomb-form-native'
+import {connect} from 'react-redux'//connects React component with Redux store
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
 import {loadCustomers} from '../../services/customers'
+
 
 
 
@@ -49,6 +50,7 @@ class Customer extends Component{
    }
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
+      this.props.reduxIncreaseCounter(item)
       this.props.navigation.navigate('SingleCustomer', {item})
    }
    ///////////////////
@@ -80,4 +82,37 @@ class Customer extends Component{
     }
 }
 
-export default  Customer
+//// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state)=>{
+   console.log('State:');
+   console.log(state);
+   // Redux Store --> Component
+   return {
+      counter: state.counter, //state.counterReducer.counter,
+      loggedIn: state.loggedIn
+   }
+}
+
+// Map Dispatch To Props (Dispatch Actions To Reducers. Reducers
+//Then Modify The Data And Assign It To Your Props)
+//==> connects Redux action to React component props.
+const mapDispatchToProps = (dispatch)=>{
+   //Action..
+   //// Increase Counter
+   reduxIncreaseCounter: (payload)=> dispatch({
+      type: 'INCREASE_COUNTER',
+      payload: payload
+   })
+   //// Decrease Counter
+   reduxDecreaseCounter: (payload) => dispatch({
+      type: 'DECREASE_COUNTER',
+      payload: payload
+   })
+   //Login.
+   reduxLogin: (payload)=> dispatch({
+      type: 'LOGGED_IN',
+      payload: payload
+   })
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(Customer)
