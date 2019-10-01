@@ -1,6 +1,8 @@
 //Reducer --> takes in 2 parameters(copy of current state + action payload)
 // to calculate the next state of the app.
 
+import * as types from '../actions/action_types'
+
 // Initial State
 const initialState = {
     loggedIn:false
@@ -10,7 +12,7 @@ const initialState = {
 const authReducer = (state = initialState, action)=>{
      switch (action.type) {
          //// Logged In
-        case 'LOGGED_IN':
+        case types.LOGGED_IN:
              return {
                  ...state,
                   // Redux Store
@@ -18,7 +20,7 @@ const authReducer = (state = initialState, action)=>{
                  }
              break;
         //Logged Out.
-        case 'LOGGED_OUT':
+        case types.LOGGED_OUT:
             return {
                 ...state,
                 email:action.payload

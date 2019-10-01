@@ -50,7 +50,7 @@ class Customer extends Component{
    }
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
-      this.props.reduxIncreaseCounter(item)
+      //this.props.reduxIncreaseCounter(item)
       this.props.navigation.navigate('SingleCustomer', {item})
    }
    ///////////////////
@@ -84,8 +84,8 @@ class Customer extends Component{
 
 //// Map State To Props (Redux Store Passes State To Component)
 const mapStateToProps = (state)=>{
-   console.log('State:');
-   console.log(state);
+   console.log('State:', state);
+   //console.log(state);
    // Redux Store --> Component
    return {
       counter: state.counter, //state.counterReducer.counter,

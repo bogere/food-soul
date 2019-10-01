@@ -1,4 +1,7 @@
 
+import * as types from '../actions/action_types'
+
+
 //initial state.
 const initialState = {
     counter: 0,
@@ -8,7 +11,7 @@ const initialState = {
 const counterReducer = (state = initialState, action)=>{
     switch (action.type) {
         //// Increase Counter
-        case 'INCREASE_COUNTER':
+        case types.INCREASE_COUNTER:
             return {
                 ...state,
                 //Redux store.
@@ -16,7 +19,7 @@ const counterReducer = (state = initialState, action)=>{
             }
             break;
         //// Decrease Counter
-        case 'DECREASE_COUNTER':
+        case types.DECREASE_COUNTER:
              return {
                  ...state,
                  //Redux store.

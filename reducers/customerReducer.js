@@ -1,3 +1,6 @@
+
+import  * as types from '../actions/action_types'//strings r prone to duplicates
+
 //initial state.
 const initialState = {
     customers: []
@@ -5,20 +8,20 @@ const initialState = {
 
 const customerReducer = (state = initialState, action)=>{
      switch (action.type) {
-         case 'FETCH_CUSTOMERS':
+         case types.FETCH_CUSTOMERS:
              return {
                  ...state,
                  loading: true
              }
              break;
-        case 'FETCH_CUSTOMERS_SUCCESS':
+        case types.FETCH_CUSTOMERS_SUCCESS:
             return {
                 ...state,
                 loading:false,
                 customers: state.customers = action.payload //impure function
             }
             break;
-        case 'FETCH_CUSTOMERS_FAIL':
+        case types.FETCH_CUSTOMERS_FAIL:
               return {
                   ...state,
                   loading:false,
