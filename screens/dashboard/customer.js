@@ -5,9 +5,8 @@ import {connect} from 'react-redux'//connects React component with Redux store
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
 import {loadCustomers} from '../../services/customers'
-
-
-
+//what about the action types.
+import {INCREASE_COUNTER, DECREASE_COUNTER, LOGGED_IN} from '../../actions/action_types'
 
 
 class Customer extends Component{
@@ -51,6 +50,7 @@ class Customer extends Component{
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
       //this.props.reduxIncreaseCounter(item)
+      //console.log('accessing redux store', this.props.counter)
       this.props.navigation.navigate('SingleCustomer', {item})
    }
    ///////////////////
@@ -74,7 +74,9 @@ class Customer extends Component{
                      seeCustomerItem = {this.navigateCustomerItem}
                    />
                }
-             
+               <Text>{this.props.greeting}</Text>
+               <Text>{this.props.counter}</Text>
+
            </View>
 
              
@@ -88,7 +90,8 @@ const mapStateToProps = (state)=>{
    //console.log(state);
    // Redux Store --> Component
    return {
-      counter: state.counter, //state.counterReducer.counter,
+      greeting: 'Hello goldsoft',
+      counter: state.counter, //state.counterReducer.counter, failed to read
       loggedIn: state.loggedIn
    }
 }
@@ -96,23 +99,27 @@ const mapStateToProps = (state)=>{
 // Map Dispatch To Props (Dispatch Actions To Reducers. Reducers
 //Then Modify The Data And Assign It To Your Props)
 //==> connects Redux action to React component props.
+
 const mapDispatchToProps = (dispatch)=>{
    //Action..
-   //// Increase Counter
-   reduxIncreaseCounter: (payload)=> dispatch({
-      type: 'INCREASE_COUNTER',
-      payload: payload
-   })
-   //// Decrease Counter
-   reduxDecreaseCounter: (payload) => dispatch({
-      type: 'DECREASE_COUNTER',
-      payload: payload
-   })
-   //Login.
-   reduxLogin: (payload)=> dispatch({
-      type: 'LOGGED_IN',
-      payload: payload
-   })
+   return {
+     //// Increase Counter
+      reduxIncreaseCounter: (payload)=> dispatch({
+          type: INCREASE_COUNTER,
+          payload: payload
+      }),
+      //// Decrease Counter
+      reduxDecreaseCounter: (payload) => dispatch({
+          type: DECREASE_COUNTER,
+          payload: payload
+      }),
+      //Login.
+      reduxLogin: (payload)=> dispatch({
+          type: LOGGED_IN,
+          payload: payload
+      })
+   }
+   
 }
 
-export default  connect(mapStateToProps,mapDispatchToProps)(Customer)
+export default  connect(mapStateToProps, mapDispatchToProps)(Customer)
