@@ -15,23 +15,26 @@ class Cat extends Component{
   render(){
       return(
           <View>
-            {
-                this.props.cats.map((cat)=>{
-                 return(
-                     <Text>{'Hello funny cat!!!'}</Text>
-                 )
-                })
-            }
+             {
+                 this.props.cats.map((cat)=>{
+                     return (
+                         <Text>{'Hello the cat!!!'}</Text>
+                     )
+                 })
+             }
+            <Button onClick= {this.props.fetchCats }></Button>
           </View>
       )
   }
 }
 
 const mapStateToProps = (state,ownProps)=>{
+    console.log('hey cats',state.catReducer.cats)
   return{
-      cats:state.cats
+      cats:state.catReducer.cats
   }
 }
+
 
 export default  connect(mapStateToProps,{
    fetchCats  

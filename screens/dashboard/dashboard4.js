@@ -20,6 +20,9 @@ export default class Dashboard extends Component {
     goToOrders(){
         this.props.navigation.navigate('Orders')
     }
+    goToCats = ()=>{
+      this.props.navigation.navigate('Cats')
+    }
 
     //////////////////////////////////////
   render() {
@@ -45,6 +48,12 @@ export default class Dashboard extends Component {
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
               title='Orders' 
                onPress = {this.goToOrders}/>
+          <Button
+             icon={<Icon name='code' color='#ffffff' />}
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              title='Cats' 
+               onPress = {this.goToCats}/>
     </View>
       
       
