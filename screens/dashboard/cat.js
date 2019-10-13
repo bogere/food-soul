@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
+import {Platform, StyleSheet,Text, View,Image, Alert} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 import {connect} from 'react-redux'
 import fetchCats from '../../actions/fetchCats' //action Creators
@@ -20,13 +20,6 @@ class Cat extends Component{
   render(){
       return(
           <View>
-             {
-                 this.props.cats.map((cat)=>{
-                     return (
-                         <Text>{cat.url}</Text>
-                     )
-                 })
-             }
             <Button
                 icon={<Icon name='code' color='#ffffff' />}
                 backgroundColor='#03A9F4'
@@ -34,13 +27,23 @@ class Cat extends Component{
                 title='FETCH CATS ' 
                 onPress= {this.props.fetchCats } >
              </Button>
+             {
+                 this.props.cats.map((cat)=>{
+                     return (
+                         <Image
+                           style = {{width:cat.width, height:cat.height }} 
+                           source = {{uri:cat.url}}
+                           />
+                     )
+                 })
+             }
           </View>
       )
   }
 }
 
 const mapStateToProps = (state,ownProps)=>{
-    console.log('hey cats',state.catReducer.cats)
+    console.log('hey cats',state)
   return{
       cats:state.catReducer.cats
   }

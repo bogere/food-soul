@@ -13,7 +13,8 @@ const fetchCatReducer = (state = initialState, action)=>{
              return {
                   ...state,
                   loading:false,
-                  cats: state.cats = action.payload
+                  //cats: state.cats = action.payload
+                  cats:action.payload
              }
              break;
         //HTTP request has been started, this is the right place to for example display a busy indicator to the user.

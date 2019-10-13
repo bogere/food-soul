@@ -1,7 +1,7 @@
 //The state of the app lives as a single, immutable object within store.
 // Imports: Dependencies
 import { AsyncStorage } from 'react-native';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware,compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
@@ -41,7 +41,11 @@ const persistedReducer = persistReducer(persistConfig,rootReducer)
 // Redux: Store
 const store = createStore(
     persistedReducer,
-    applyMiddleware(...middleware),
+    compose(
+        applyMiddleware(...middleware),
+        window.devToolsExtension ? window.devToolsExtension() : f => f   
+    )
+    //applyMiddleware(...middleware),
 )
 
 // Middleware: Redux Persist Persister
