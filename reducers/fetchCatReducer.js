@@ -32,6 +32,20 @@ const fetchCatReducer = (state = initialState, action)=>{
                   error: 'Failed to load the cats records'
              }
              break;
+        case types.ADOPT_CAT_SUCCESS:
+             return {
+                  ...state,
+                  cats:[...state.cats, action.payload]  // OR.
+                  //cats: state.cats.concat(action.payload)  //impure    
+             }
+             break;
+        case types.CHASE_CAT_SUCCESS:
+             return{
+                  ...state,
+                cats: state.cats.filter(item => item !== action.payload)
+             }
+             break;
+     
          default:
              return state
              break;

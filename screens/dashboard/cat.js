@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {Platform, StyleSheet,Text, View,Image, Alert} from 'react-native';
-import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
+import {Platform, StyleSheet,Text, View,Image, Alert, ScrollView} from 'react-native';
+import { Card, ListItem, Button, Icon,Input, Header, Divider} from 'react-native-elements'
 import {connect} from 'react-redux'
-import fetchCats from '../../actions/fetchCats' //action Creators
+import {fetchCats,adoptCat,removeCat} from '../../actions/fetchCats' //action Creators
 
 class Cat extends Component{
   constructor(props){
@@ -10,16 +10,34 @@ class Cat extends Component{
        this.state = {
            catlist:[]
        }
+       //this.deleteCat = this.deleteCat.bind(this,item)
   }
   componentDidMount(){
 
+  }
+
+  //Adopting a new cat.
+  adoptNewCat = ()=>{
+      let newCat = {
+        breeds: [],
+        id: "24i", url: "https://cdn2.thecatapi.com/images/e9p.jpg",
+        width: 200, height: 300
+      }
+      //call the redux action..
+     this.props.adoptCat(newCat)
+  }
+  //Chasing away the cat.
+  deleteCat = (cat)=>{
+      //debugger
+      console.log('deleted cat', cat)
+      this.props.removeCat(cat) //this aint being activated.. work on that pliz.
   }
 
 
   /////////////////
   render(){
       return(
-          <View>
+          <ScrollView>
             <Button
                 icon={<Icon name='code' color='#ffffff' />}
                 backgroundColor='#03A9F4'
@@ -30,20 +48,34 @@ class Cat extends Component{
              {
                  this.props.cats.map((cat)=>{
                      return (
+                       <View>
                          <Image
                            style = {{width:cat.width, height:cat.height }} 
                            source = {{uri:cat.url}}
                            />
+                          <Button
+                              buttonStyle={{borderRadius: 0, marginLeft:10, marginRight: 10, marginBottom: 0}}
+                              title='CHASE IT ' 
+                              onPress = {()=>this.deleteCat(cat)}>
+                           </Button>
+                        </View>
                      )
                  })
              }
-          </View>
+             <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                buttonStyle={{borderRadius: 0, marginLeft:10, marginRight: 10, marginBottom: 0}}
+                title='MORE CATS ' 
+                onPress= {this.adoptNewCat} >
+             </Button>
+          </ScrollView>
       )
   }
 }
 
 const mapStateToProps = (state,ownProps)=>{
-    console.log('hey cats',state)
+
   return{
       cats:state.catReducer.cats
   }
@@ -51,5 +83,5 @@ const mapStateToProps = (state,ownProps)=>{
 
 
 export default  connect(mapStateToProps,{
-   fetchCats  
+   fetchCats, adoptCat,removeCat  
 })(Cat)

@@ -20,11 +20,18 @@ const fetchCatsStarted = ()=>{
 }
 
 const fetchCatsSuccess = (cat)=>{
-     //debugger //i can the cats API calls here.
+
     return { type: types.FETCH_CATS_SUCCESS, payload:cat }
 }
 
-// fetching a random cat starts now
+const addNewCat = (newCat)=>{
+    return { type: types.ADOPT_CAT_SUCCESS, payload: newCat}
+}
+const chaseCatAway = (catInfo)=>{
+    return {type: types.CHASE_CAT_SUCCESS, payload:catInfo}
+}
+
+// fetching a random cat starts now.. REST API.
 const fetchCats = ()=> dispatch =>{
    dispatch(fetchCatsStarted())
 
@@ -39,4 +46,23 @@ const fetchCats = ()=> dispatch =>{
    .catch(err=> dispatch(fetchCatsError()))
 }
 
-export default fetchCats
+//what about Adding a new cat to ur store.
+const adoptCat = (newCat)=> dispatch =>{
+    dispatch(addNewCat(newCat)) 
+}
+
+//what about deleting cats from place.
+const removeCat = (catInfo)=>dispatch =>{
+   /*return dispatch({
+        type: types.CHASE_CAT_SUCCESS,
+        payload:catInfo
+   })*/
+   dispatch(chaseCatAway(catInfo))
+}
+
+//export default fetchCats
+export {
+    fetchCats,
+    adoptCat,
+    removeCat
+}
