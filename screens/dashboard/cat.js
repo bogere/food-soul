@@ -11,6 +11,11 @@ class Cat extends Component{
            catlist:[]
        }
   }
+  componentDidMount(){
+
+  }
+
+
   /////////////////
   render(){
       return(
@@ -18,11 +23,17 @@ class Cat extends Component{
              {
                  this.props.cats.map((cat)=>{
                      return (
-                         <Text>{'Hello the cat!!!'}</Text>
+                         <Text>{cat.url}</Text>
                      )
                  })
              }
-            <Button onClick= {this.props.fetchCats }></Button>
+            <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                title='FETCH CATS ' 
+                onPress= {this.props.fetchCats } >
+             </Button>
           </View>
       )
   }

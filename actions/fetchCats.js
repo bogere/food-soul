@@ -20,6 +20,7 @@ const fetchCatsStarted = ()=>{
 }
 
 const fetchCatsSuccess = (cat)=>{
+     //debugger //i can the cats API calls here.
     return { type: types.FETCH_CATS_SUCCESS, payload:cat }
 }
 
