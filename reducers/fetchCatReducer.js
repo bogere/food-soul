@@ -6,6 +6,29 @@ import * as types from '../actions/action_types'
 const initialState = {
      cats:[]
 }
+
+//some utility functions
+//updating the Item in Array.
+//Updating one item in an array can be accomplished by using Array.map, 
+//returning a new value for the item we want to update, and returning 
+//the existing values for all other items:
+ function updateObjectInArray(array, action){
+      console.log('ArrayItems', array)
+   return array.map((item,index)=>{
+       if (index !== action.index) {
+            // This isn't the item we care about - keep it as-is
+            return item
+       }
+        // Otherwise, this is the one we want - return an updated value
+        return{
+             ...item,
+             ...action.item
+        }
+   })
+ }
+
+
+
 const fetchCatReducer = (state = initialState, action)=>{
      switch (action.type) {
          //// HTTP request was successful, we must update the state.
@@ -45,7 +68,10 @@ const fetchCatReducer = (state = initialState, action)=>{
                 cats: state.cats.filter(item => item !== action.payload)
              }
              break;
-     
+        case types.UPDATE_CAT_SUCCESS:
+             return updateObjectInArray(state.cats, action)
+             break;
+         
          default:
              return state
              break;

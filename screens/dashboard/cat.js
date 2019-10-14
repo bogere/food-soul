@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Platform, StyleSheet,Text, View,Image, Alert, ScrollView} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header, Divider} from 'react-native-elements'
 import {connect} from 'react-redux'
-import {fetchCats,adoptCat,removeCat} from '../../actions/fetchCats' //action Creators
+import {fetchCats,adoptCat,removeCat,updateCatDetail} from '../../actions/fetchCats' //action Creators
 
 class Cat extends Component{
   constructor(props){
@@ -28,10 +28,13 @@ class Cat extends Component{
   }
   //Chasing away the cat.
   deleteCat = (cat)=>{
-      //debugger
-      console.log('deleted cat', cat)
+      //console.log('deleted cat', cat)
       this.props.removeCat(cat) //this aint being activated.. work on that pliz.
   }
+  //Updating the cat details.
+  updateCat = (catItem)=>{
+       this.props.updateCatDetail(catItem)
+  } 
 
 
   /////////////////
@@ -58,6 +61,11 @@ class Cat extends Component{
                               title='CHASE IT ' 
                               onPress = {()=>this.deleteCat(cat)}>
                            </Button>
+                           <Button
+                              buttonStyle={{borderRadius: 0, marginLeft:10, marginRight: 10, marginBottom: 0}}
+                              title='EDIT IT ' 
+                              onPress = {()=>this.updateCat(cat)}>
+                           </Button>
                         </View>
                      )
                  })
@@ -83,5 +91,5 @@ const mapStateToProps = (state,ownProps)=>{
 
 
 export default  connect(mapStateToProps,{
-   fetchCats, adoptCat,removeCat  
+   fetchCats, adoptCat,removeCat,updateCatDetail  
 })(Cat)

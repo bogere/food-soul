@@ -31,6 +31,13 @@ const chaseCatAway = (catInfo)=>{
     return {type: types.CHASE_CAT_SUCCESS, payload:catInfo}
 }
 
+const editCatDetail = (catDetail)=>{
+    return {
+        type: types.UPDATE_CAT_SUCCESS,
+        payload:catDetail
+    }
+}
+
 // fetching a random cat starts now.. REST API.
 const fetchCats = ()=> dispatch =>{
    dispatch(fetchCatsStarted())
@@ -59,10 +66,15 @@ const removeCat = (catInfo)=>dispatch =>{
    })*/
    dispatch(chaseCatAway(catInfo))
 }
+//Editing the cat details.
+const updateCatDetail = (catItem)=> dispatch=> {
+   dispatch(editCatDetail(catItem))
+}
 
 //export default fetchCats
 export {
     fetchCats,
     adoptCat,
-    removeCat
+    removeCat,
+    updateCatDetail
 }
