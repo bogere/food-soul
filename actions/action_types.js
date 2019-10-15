@@ -1,8 +1,11 @@
 //just action types since strings are prone to duplicates.
 
 //auth actions
-export const LOGGED_IN = 'LOGGED_IN'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
+export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED'
 export const LOGOUT_USER = 'LOGOUT_USER'
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 //counter.
 export const INCREASE_COUNTER = 'INCREASE_COUNTER'
