@@ -8,7 +8,8 @@ const initialState = {
     authenticated:false,
     currentUser:{},
     loginError:{},
-    signupSuccess: false
+    signupSuccess: false,
+    networkFailure: false
 }
 
 // Reducers (Modifies The State And Returns A New State)
@@ -47,7 +48,13 @@ const authReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 authenticated:false,
-                currentUser: null
+                currentUser:{}
+            }
+        //network failure.
+        case types.NETWORK_FAILURE:
+            return{
+                ...state,
+                networkFailure: true
             }
      
          default:

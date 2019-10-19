@@ -8,12 +8,13 @@ import * as types from './action_types'
 //When a user’s object is saved to the state and their token is saved to
 // localStorage, you can consider your user logged in.
 const userLoginFetch = (user)=>{
+    debugger
    return dispatch =>{
-       return fetch('http://localhost:3000/api/v1/login',{
+       return fetch('http://localhost:4000/mobile/login',{
          method: 'POST',
          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
+            'Content-Type': 'application/json'
+            //'Accept': 'application/json',
           },
           body: JSON.stringify({user})
        })
@@ -44,11 +45,11 @@ const loginUserFailure = errorObj =>({
 //API for signig up the user.
 const userSignUpFetch = (user)=>{
    return dispatch=>{
-       return fetch('http://localhost:3000/api/v1/register',{
+       return fetch('http://localhost:4000/mobile/register',{
            method: 'post',
            headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
+            'Content-Type': 'application/json'
+            //'Accept': 'application/json',
           },
           body: JSON.stringify({user})
        })
@@ -59,6 +60,10 @@ const userSignUpFetch = (user)=>{
            } else {
                dispatch(signUpFailure(data.error)) 
            }
+       })
+       .catch(err=>{
+           console.log('hey network err', err)
+           dispatch(networkFailure(err))
        })
    }
 }
@@ -72,6 +77,12 @@ const signUserSuccess = userObj =>({
  //signUp failure.
  const signUpFailure = errorObj =>({
      type: types.SIGNUP_FAILURE,
+     payload: errorObj
+ })
+
+ //network failure
+ const networkFailure = errorObj =>({
+     type: types.NETWORK_FAILURE,
      payload: errorObj
  })
 

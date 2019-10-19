@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text,ScrollView,TouchableHighlight,Alert, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
+import {connect} from 'react-redux'
+import {userSignUpFetch} from '../actions/authActions'
+
 
 const Form = t.form.Form
 
@@ -61,10 +64,27 @@ let options = {
     if (value) { // if validation fails, value will be null
       console.log(value); // value here is an instance of Person
       //Alert('Agent registered successful')
+      const userObj = {
+        username: 'hello',
+        email: 'gold@ymail.com',
+        password: '123bob'
+      }
+      this.props.userSignUpFetch(userObj)
+      //yeah show the network problem.
+      if (this.props.networkFailure) {
+          this.showAlert("Network Failure occurred!!!")
+      }
     }
    }
 
+   showAlert(message){
+     Alert.alert(message)
+   }
+
    render(){
+       /*if (this.props.networkFailure) {
+          this.showAlert("Network Failure !!!!")
+       }*/
        return (
         <ScrollView>
              <View style={styles.container}>
@@ -108,4 +128,16 @@ let options = {
     }
   });
 
-  export default  Register
+  const mapStateToProps = (state)=>{
+     console.log('hey auth state', state.authReducer)
+     return{
+      signupSuccess: state.authReducer.signupSuccess,
+      networkFailure: state.authReducer.networkFailure
+     }
+  }
+
+  export default connect(mapStateToProps,{
+    userSignUpFetch
+  })(Register)
+  
+  //export default Register
