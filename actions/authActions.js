@@ -1,20 +1,19 @@
 
 
 //Action creators for Authentication..
-import * as types from './action_types'
-
+import  * as types from './action_types'
+import {ROOT_API} from './constants'
 
 //login the user.. API request call for login
 //When a user’s object is saved to the state and their token is saved to
 // localStorage, you can consider your user logged in.
 const userLoginFetch = (user)=>{
-    debugger
    return dispatch =>{
-       return fetch('http://localhost:4000/mobile/login',{
+       return fetch(`${ROOT_API}/mobile/login`,{
          method: 'POST',
          headers: {
-            'Content-Type': 'application/json'
-            //'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
           body: JSON.stringify({user})
        })
@@ -45,11 +44,11 @@ const loginUserFailure = errorObj =>({
 //API for signig up the user.
 const userSignUpFetch = (user)=>{
    return dispatch=>{
-       return fetch('http://localhost:4000/mobile/register',{
+       return fetch(`${ROOT_API}/mobile/register`,{
            method: 'post',
            headers: {
-            'Content-Type': 'application/json'
-            //'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify({user})
        })
