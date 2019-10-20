@@ -3,7 +3,8 @@ import  * as types from '../actions/action_types'//strings r prone to duplicates
 
 //initial state.
 const initialState = {
-    customers: []
+    customers: [],
+    errorResponse: ''
 }
 
 const customerReducer = (state = initialState, action)=>{
@@ -21,14 +22,38 @@ const customerReducer = (state = initialState, action)=>{
                 customers: state.customers = action.payload //impure function
             }
             break;
-        case types.FETCH_CUSTOMERS_FAIL:
+        case types.FETCH_CUSTOMERS_FAILURE:
               return {
                   ...state,
                   loading:false,
-                  error: 'Error in fetching customers data'
+                  errorResponse: 'Error in fetching customers data'
               }
-         default:
-             return state
+        case types.ADD_CUSTOMER_SUCCESS:
+             return{
+                 ...state,
+                 customers:[...state.customers, action.payload]
+             }
+             break;
+        case types.ADD_CUSTOMER_FAILURE:
+            return{
+               ...state,
+               errorResponse: 'Failed to add the customer'
+            }
+            break;
+        case types.DELETE_CUSTOMER_SUCCESS:
+              return{
+                  ...state,
+                  customers: state.customers.filter(item => item !== action.payload )
+              }
+              break;
+        case types.DELETE_CUSTOMER_FAILURE:
+              return{
+                ...state,
+                errorResponse: 'Failed to delete the customer'
+              }
+              break;
+        default:
+           return state
      }
 }
 
