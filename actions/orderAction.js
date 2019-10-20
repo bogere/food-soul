@@ -55,42 +55,42 @@ const deleteCustomerDetail = (order)=>{
 //action types.
 const fetchOrderSuccess = (orders)=>{
    return { 
-       type: types.FETCH_CUSTOMERS_SUCCESS, 
+       type: types.FETCH_ORDERS_SUCCESS, 
        payload: orders
     }
 }
 
 const fetchOrderFailure = (errorObj)=>{
      return {
-         type: types.FETCH_CUSTOMERS_FAILURE,
+         type: types.FETCH_ORDERS_FAILURE,
          payload: errorObj
      } 
 }
 
 const newOrderSuccess = (order)=>{
     return {
-        type: types.ADD_CUSTOMER_SUCCESS,
+        type: types.ADD_ORDER_SUCCESS,
         payload: order
     }
 }
 
 const newOrderFailure = (errorObj)=>{
    return {
-       type: types.ADD_CUSTOMER_FAILURE,
+       type: types.ADD_ORDER_FAILURE,
        payload: errorObj
    }
 }
 
 const deleteOrderSuccess = (order)=>{
     return {
-        type: types.DELETE_CUSTOMER_SUCCESS,
+        type: types.DELETE_ORDER_SUCCESS,
         payload:order
     }
 }
 
 const deleteOrderFailure = (errorObj)=>{
    return {
-       type: types.DELETE_CUSTOMER_FAILURE,
+       type: types.DELETE_ORDER_FAILURE,
        payload: errorObj
    }
 }
