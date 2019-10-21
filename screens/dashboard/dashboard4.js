@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
 import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
+import {connect} from 'react-redux'
+import {logoutUser} from '../../actions/authActions'
 
-export default class Dashboard extends Component {
+ class Dashboard extends Component {
 
     constructor(props){
         super(props)
@@ -11,6 +13,14 @@ export default class Dashboard extends Component {
         }
         this.goToCustomers = this.goToCustomers.bind(this)
         this.goToOrders = this.goToOrders.bind(this)
+    }
+
+    componentDidMount(){
+      // if it is not logged in.
+      if (!this.props.currentUser) {
+         //this.props.navigation.goBack()
+         this.props.navigation.navigate('Home')
+      }
     }
      
     goToCustomers(){
@@ -22,6 +32,10 @@ export default class Dashboard extends Component {
     }
     goToCats = ()=>{
       this.props.navigation.navigate('Cats')
+    }
+
+    goToLogout = ()=>{
+      this.props.logoutUser()
     }
 
     //////////////////////////////////////
@@ -69,3 +83,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     }
 })
+
+const mapStateToProps = (state)=>{
+   currentUser: state.authReducer.currentUser
+}
+
+export default connect(mapStateToProps,{
+  logoutUser
+})(Dashboard)

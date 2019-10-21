@@ -54,7 +54,6 @@ class Login extends Component{
           } else {
               Alert.alert("Invalid username/password")
           }
-           
 
         }
     }
