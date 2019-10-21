@@ -4,12 +4,14 @@ import  * as types from '../actions/action_types'//strings r prone to duplicates
 //initial state.
 const initialState = {
     customers: [],
-    errorResponse: ''
+    errorResponse: '',
+    newCustomerForm:false,
+    editCustomerForm:false
 }
 
 const customerReducer = (state = initialState, action)=>{
      switch (action.type) {
-         case types.FETCH_CUSTOMERS:
+        case types.FETCH_CUSTOMERS:
              return {
                  ...state,
                  loading: true
@@ -52,6 +54,19 @@ const customerReducer = (state = initialState, action)=>{
                 errorResponse: 'Failed to delete the customer'
               }
               break;
+        case types.SHOW_NEW_CUSTOMER_FORM:
+            return{
+               ...state,
+               newCustomerForm:true
+            }
+            break;
+        case types.HIDE_NEW_CUSTOMER_FORM:
+             return{
+                 ...state,
+                 newCustomerForm: false
+             }
+             break;
+        
         default:
            return state
      }

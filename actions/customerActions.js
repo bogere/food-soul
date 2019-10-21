@@ -1,6 +1,7 @@
 //Action creators for Authentication..
 import  * as types from './action_types'
 import {ROOT_API} from './constants'
+import { bindActionCreators } from 'C:/Users/goldsoft25/AppData/Local/Microsoft/TypeScript/3.6/node_modules/redux'
 
 //fetch the customer details from server.
 const fetchCustomerDetails = (agentId)=>{
@@ -52,6 +53,21 @@ const deleteCustomerDetail = (customer)=>{
     }
 }
 
+//showing and hiding the customer form.
+const toggleCustomerForm = (visibilityMode)=>{
+   return dispatch =>{
+       if (visibilityMode === 'SHOW') {
+        return {
+            type: types.SHOW_NEW_CUSTOMER_FORM
+        }
+       } else {
+          return{
+              type: types.HIDE_NEW_CUSTOMER_FORM
+          }  
+       }
+   }
+}
+
 //action types.
 const fetchCustomerSuccess = (customers)=>{
    return { 
@@ -99,5 +115,6 @@ const deleteCustomerFailure = (errorObj)=>{
 export{
     fetchCustomerDetails,
     addCustomerDetail,
-    deleteCustomerDetail
+    deleteCustomerDetail,
+    toggleCustomerForm
 }

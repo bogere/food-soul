@@ -4,7 +4,11 @@ import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements
 import {connect} from 'react-redux'//connects React component with Redux store
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
-import {fetchCustomerDetails,addCustomerDetail,deleteCustomerDetail} from '../../actions/customerActions'
+import {
+         fetchCustomerDetails,addCustomerDetail,
+         deleteCustomerDetail,toggleCustomerForm
+       } 
+      from '../../actions/customerActions'
 
 
 
@@ -17,8 +21,6 @@ class Customer extends Component{
          customers:[]
       }
       //bind the fucntions in the constructor instead of render method.. optimisation.
-      this.showCustomerForm = this.showCustomerForm.bind(this)
-      this.hideCustomerForm = this.hideCustomerForm.bind(this)
       this.navigateCustomerItem = this.navigateCustomerItem.bind(this)
    }
 
@@ -26,23 +28,33 @@ class Customer extends Component{
          this.props.fetchCustomerDetails()
    }
 
-   showCustomerForm(){
-      this.setState({
-         newCustomerForm: true
-      })
+   showCustomerForm = () =>{
+       const visibilityMode = 'SHOW'
+       this.props.toggleCustomerForm(visibilityMode)
    }
-   hideCustomerForm(){
-      this.setState({
-         newCustomerForm: false
-      })
-      console.log('hey hide the customer form')
+   hideCustomerForm = ()=>{
+      const visibilityMode = 'HIDE'
+      this.props.toggleCustomerForm(visibilityMode)
    }
+
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
       //console.log('accessing redux store', this.props.counter)
       this.props.navigation.navigate('SingleCustomer', {item})
    }
-   
+
+   addNewCustomer = ()=>{
+     const newCustomer = {
+        name: 'hello customers',
+        orders: 5
+     }
+     this.props.addCustomerDetail(newCustomer)
+   }
+
+   removeCustomer = (customer)=>{
+       this.props.deleteCustomerDetail(customer)
+   }
+
    ///////////////////
     render(){
         return (
@@ -53,9 +65,10 @@ class Customer extends Component{
                rightComponent={{ icon: 'home', color: '#fff' }}
              />
              {
-                this.state.newCustomerForm ?
+                this.props.showForm ?
                   <NewCustomer 
                      hideForm = {this.hideCustomerForm}
+                     addNewCustomer = {this.addNewCustomer}
                   />
                  :
                  <CustomerList 
@@ -77,7 +90,8 @@ const mapStateToProps = (state)=>{
    // Redux Store --> Component
    return {
       customers: state.customerReducer.customers,
-      errorResponse: state.customerReducer.errorResponse
+      errorResponse: state.customerReducer.errorResponse,
+      showForm:state.customerReducer.newCustomerForm
    }
 }
 
@@ -89,5 +103,5 @@ const mapStateToProps = (state)=>{
 
 export default  connect(mapStateToProps, {
    fetchCustomerDetails,addCustomerDetail,
-   deleteCustomerDetail
+   deleteCustomerDetail, toggleCustomerForm
 })(Customer)
