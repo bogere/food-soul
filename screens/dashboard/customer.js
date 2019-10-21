@@ -4,9 +4,8 @@ import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements
 import {connect} from 'react-redux'//connects React component with Redux store
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
-import {loadCustomers} from '../../services/customers'
-//what about the action types.
-import {INCREASE_COUNTER, DECREASE_COUNTER, LOGGED_IN} from '../../actions/action_types'
+import {fetchCustomerDetails,addCustomerDetail,deleteCustomerDetail} from '../../actions/customerActions'
+
 
 
 class Customer extends Component{
@@ -24,16 +23,7 @@ class Customer extends Component{
    }
 
    componentDidMount(){
-         loadCustomers()
-           .then(result=>{
-                console.log(result)
-                this.setState({
-                   customers:result.customers
-                })
-           })
-           .catch(err=>{
-             console.log(err)
-           })
+         this.props.fetchCustomerDetails()
    }
 
    showCustomerForm(){
@@ -49,10 +39,10 @@ class Customer extends Component{
    }
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
-      //this.props.reduxIncreaseCounter(item)
       //console.log('accessing redux store', this.props.counter)
       this.props.navigation.navigate('SingleCustomer', {item})
    }
+   
    ///////////////////
     render(){
         return (
@@ -69,13 +59,11 @@ class Customer extends Component{
                   />
                  :
                  <CustomerList 
-                     users = {this.state.customers}
+                     users = {this.props.customers}
                      showForm = {this.showCustomerForm}
                      seeCustomerItem = {this.navigateCustomerItem}
                    />
                }
-               <Text>{this.props.greeting}</Text>
-               <Text>{this.props.counter}</Text>
 
            </View>
 
@@ -86,13 +74,10 @@ class Customer extends Component{
 
 //// Map State To Props (Redux Store Passes State To Component)
 const mapStateToProps = (state)=>{
-   console.log('State:', state);
-   //console.log(state);
    // Redux Store --> Component
    return {
-      greeting: 'Hello goldsoft',
-      counter: state.counter, //state.counterReducer.counter, failed to read
-      loggedIn: state.loggedIn
+      customers: state.customerReducer.customers,
+      errorResponse: state.customerReducer.errorResponse
    }
 }
 
@@ -100,26 +85,9 @@ const mapStateToProps = (state)=>{
 //Then Modify The Data And Assign It To Your Props)
 //==> connects Redux action to React component props.
 
-const mapDispatchToProps = (dispatch)=>{
-   //Action..
-   return {
-     //// Increase Counter
-      reduxIncreaseCounter: (payload)=> dispatch({
-          type: INCREASE_COUNTER,
-          payload: payload
-      }),
-      //// Decrease Counter
-      reduxDecreaseCounter: (payload) => dispatch({
-          type: DECREASE_COUNTER,
-          payload: payload
-      }),
-      //Login.
-      reduxLogin: (payload)=> dispatch({
-          type: LOGGED_IN,
-          payload: payload
-      })
-   }
-   
-}
 
-export default  connect(mapStateToProps, mapDispatchToProps)(Customer)
+
+export default  connect(mapStateToProps, {
+   fetchCustomerDetails,addCustomerDetail,
+   deleteCustomerDetail
+})(Customer)
