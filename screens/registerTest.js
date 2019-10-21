@@ -129,7 +129,6 @@ let options = {
   });
 
   const mapStateToProps = (state)=>{
-     console.log('hey auth state', state.authReducer)
      return{
       signupSuccess: state.authReducer.signupSuccess,
       networkFailure: state.authReducer.networkFailure
