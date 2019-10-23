@@ -14,7 +14,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     fontWeight:"bold"
-   }
+   },
+   registerContainer:{
+    justifyContent: 'center',
+    marginTop: 50,
+    padding: 20,
+    backgroundColor: '#ffffff',
+  }
 })
 
 

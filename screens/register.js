@@ -4,6 +4,7 @@ import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
 import {connect} from 'react-redux'
 import {userSignUpFetch} from '../actions/authActions'
+import styles from '../constants/styles'
 
 
 const Form = t.form.Form
@@ -54,11 +55,10 @@ let options = {
        this.state = {
          
        }
-       //It's better to move it outside the render to avoid binding each time the component renders.
-       this.onPress = this.onPress.bind(this)
+       
    }
 
-   onPress(){
+   registerAgent = ()=>{
        // call getValue() to get the values of the form
     var value = this.refs.myForm.getValue();
     if (value) { // if validation fails, value will be null
@@ -87,46 +87,24 @@ let options = {
        }*/
        return (
         <ScrollView>
-             <View style={styles.container}>
-              {/* display */}
-             <Form
-              ref="myForm"
-              type={Agent}
-              options={options}
-            />
-           <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-              <Text style={styles.buttonText}>Save</Text>
-           </TouchableHighlight>
-          </View>
+              <View style={styles.registerContainer}>
+                 {/* display */}
+                  <Form
+                     ref="myForm"  type={Agent}
+                     options={options}
+                  />
+                  <Button
+                      icon={<Icon name='code' color='#ffffff' />}
+                      backgroundColor='#03A9F4'
+                      buttonStyle={styles.foodButton}
+                      title='Register As AGENT' 
+                      onPress = {this.registerAgent}/>
+               </View>
         </ScrollView>
        )
    }
   }
 
-
-  var styles = StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      marginTop: 50,
-      padding: 20,
-      backgroundColor: '#ffffff',
-    },
-    buttonText: {
-      fontSize: 18,
-      color: 'white',
-      alignSelf: 'center'
-    },
-    button: {
-      height: 36,
-      backgroundColor: '#48BBEC',
-      borderColor: '#48BBEC',
-      borderWidth: 1,
-      borderRadius: 8,
-      marginBottom: 10,
-      alignSelf: 'stretch',
-      justifyContent: 'center'
-    }
-  });
 
   const mapStateToProps = (state)=>{
      return{
@@ -138,5 +116,4 @@ let options = {
   export default connect(mapStateToProps,{
     userSignUpFetch
   })(Register)
-  
-  //export default Register
+
