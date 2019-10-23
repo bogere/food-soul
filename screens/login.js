@@ -4,6 +4,7 @@ import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
 import {connect} from 'react-redux'
 import {userLoginFetch} from '../actions/authActions'
+import styles from '../constants/styles'
 
 const Form = t.form.Form
 // here we are: define your domain model
@@ -37,12 +38,9 @@ class Login extends Component{
           loggedIn: false
         }
      }
+      
 
-     handleInputText(e){
-        const {name, value} = e.target
-        this.setState({[name]: value})
-    }
-    loginAsAgent(e){
+    loginAsAgent = ()=>{
         let self = this
         var value = self.refs.myForm.getValue()
         if(value){
@@ -69,11 +67,11 @@ class Login extends Component{
                           options = {options}
                         />
                        <Button
-                       icon={<Icon name='code' color='#ffffff' />}
-                       backgroundColor='#03A9F4'
-                       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                       title='LOGIN ' 
-                        onPress = {this.loginAsAgent.bind(this)}/>
+                        icon={<Icon name='code' color='#ffffff' />}
+                        backgroundColor='#03A9F4'
+                        buttonStyle={styles.foodButton}
+                        title='LOGIN ' 
+                        onPress = {this.loginAsAgent}/>
                 </Card>
              </View>
          )
