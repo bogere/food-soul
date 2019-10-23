@@ -12,7 +12,7 @@ import HomeScreen from './screens/home'
 import LoginScreen from './screens/login'
 import RegisterScreen from './screens/register'
 
-import DashboardScreen from './screens/dashboard/dashboard4';
+import DashboardScreen from './screens/dashboard/dashboard';
 
 //u shall put seperator navigation for dashboard.
 import CustomerScreen from './screens/dashboard/customer';

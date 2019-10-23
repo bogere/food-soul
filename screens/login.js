@@ -47,11 +47,12 @@ class Login extends Component{
           console.log('yeah u can now login', value)
            self.props.userLoginFetch(value)
           //navigate to the dashboard page.. if login is successful
-          if (self.props.authenticated === true) {
+          /*if (self.props.authenticated === true) {
             self.props.navigation.navigate('Dashboard') 
           } else {
               Alert.alert("Invalid username/password")
-          }
+          }*/
+          self.props.navigation.navigate('Dashboard')
 
         }
     }
