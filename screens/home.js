@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, ListItem, Button, Icon,Divider} from 'react-native-elements'
+import styles from '../constants/styles'
 
 
 class Home extends Component{
@@ -12,7 +13,6 @@ class Home extends Component{
      }
   }
   goToRegister(){
-     //console.log('u r visiting the register page..')
      this.props.navigation.navigate('Register')
   }
 
@@ -28,7 +28,7 @@ class Home extends Component{
                 <Card
                     title='WELCOME TO SOUL FOOD'
                      image={require('../images/food.jpg')}>
-                   <Text style={{marginBottom: 10}}>
+                   <Text style={styles.foodText}>
                       Your next glosaries are just one phone call away
                        Get an agent and make a call each time you need something from the market 
                      The Prices are the same (even less at times)
@@ -36,13 +36,14 @@ class Home extends Component{
                   <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
-                      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                      buttonStyle={ styles.foodButton}
                       title='Register As AGENT' 
                      onPress = {this.goToRegister.bind(this)}/>
+                      
                   <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
-                      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                      buttonStyle={styles.foodButton}
                       title='LOGIN ' 
                      onPress = {this.goToLogin.bind(this)}/>
                 </Card>

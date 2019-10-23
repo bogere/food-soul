@@ -1,7 +1,7 @@
 //Action creators for Authentication..
 import  * as types from './action_types'
 import {ROOT_API} from './constants'
-import { bindActionCreators } from 'C:/Users/goldsoft25/AppData/Local/Microsoft/TypeScript/3.6/node_modules/redux'
+
 
 //fetch the customer details from server.
 const fetchCustomerDetails = (agentId)=>{
