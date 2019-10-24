@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
-//import t from 'tcomb-form-native'
 import OrderList from '../../components/orderList';
 import NewOrder from '../../components/addOrder';
 
