@@ -10,21 +10,14 @@ class OrderList extends Component{
               {
                 this.props.users.map((u, i) => {
                   return (
-                    <View key={i} style={styles.user}>
-                       <Image
-                        style={styles.image}
-                        resizeMode="cover"
-                        source={{ uri: u.avatar_url }}
-                        />
-                       <Text style={styles.name}>{u.name}</Text>
-                       <Text style={styles.name}>{u.email}</Text>
-                       <Button
-                           icon={<Icon name='code' color='#ffffff' />}
-                           backgroundColor='#03A9F4'
-                           buttonStyle={styles.foodButton}
-                           onPress = {()=>this.props.seeOrderItem(u)}
-                        />
-                     </View>
+                    <ListItem
+                       key={i}
+                       leftAvatar={{ source: { uri: u.avatar_url } }}
+                       title={u.name}
+                       subtitle={u.subtitle}
+                       onPress = {()=>this.props.seeOrderItem(u)}
+                       bottomDivider
+                  />
                     );
                  })
                }
