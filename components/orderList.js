@@ -22,7 +22,8 @@ class OrderList extends Component{
                            icon={<Icon name='code' color='#ffffff' />}
                            backgroundColor='#03A9F4'
                            buttonStyle={styles.foodButton}
-                           onPress = {()=>this.props.seeOrderItem(u)}/>
+                           onPress = {()=>this.props.seeOrderItem(u)}
+                        />
                      </View>
                     );
                  })
