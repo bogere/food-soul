@@ -3,6 +3,7 @@ import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
 import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
 import {connect} from 'react-redux'
 import {logoutUser} from '../../actions/authActions'
+import styles from '../../constants/styles'
 
  class Dashboard extends Component {
 
@@ -52,21 +53,27 @@ import {logoutUser} from '../../actions/authActions'
         <Button
              icon={<Icon name='code' color='#ffffff' />}
               backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              buttonStyle={styles.foodButton}
               title='Customers' 
                onPress = {this.goToCustomers}/>
                <Divider style={{ backgroundColor: 'blue' }} />
           <Button
              icon={<Icon name='code' color='#ffffff' />}
               backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              buttonStyle={styles.foodButton}
               title='Orders' 
                onPress = {this.goToOrders}/>
           <Button
              icon={<Icon name='code' color='#ffffff' />}
               backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              buttonStyle={styles.foodButton}
               title='Cats' 
+               onPress = {this.goToCats}/>
+          <Button
+             icon={<Icon name='code' color='#ffffff' />}
+              backgroundColor='#03A9F4'
+              buttonStyle={styles.foodButton}
+              title='Suppliers' 
                onPress = {this.goToCats}/>
     </View>
       
@@ -75,14 +82,14 @@ import {logoutUser} from '../../actions/authActions'
   }
 };
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
     container:{
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
     }
-})
+})*/
 
 const mapStateToProps = (state)=>{
    return{

@@ -20,7 +20,37 @@ const styles = StyleSheet.create({
     marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
+  },
+  user: {
+    flexDirection: 'row',
+    marginBottom: 6,
+  },
+  image: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+  },
+  name: {
+    fontSize: 16,
+    marginTop: 5,
+  },
+  email: {
+    fontSize: 12,
+    marginLeft: 5
+  },
+  social: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   }
+  /*foodList:{ // user is not valid style property. the deep nested variables r not available
+       user: {
+        flexDirection: 'row',
+        marginBottom: 6,
+      },
+    }
+  */
+     
+  //end of food list
 })
 
 
