@@ -55,16 +55,9 @@ const deleteCustomerDetail = (customer)=>{
 
 //showing and hiding the customer form.
 const toggleCustomerForm = (visibilityMode)=>{
+    
    return dispatch =>{
-       if (visibilityMode === 'SHOW') {
-        return {
-            type: types.SHOW_NEW_CUSTOMER_FORM
-        }
-       } else {
-          return{
-              type: types.HIDE_NEW_CUSTOMER_FORM
-          }  
-       }
+       dispatch(showOrHideForm(visibilityMode))
    }
 }
 
@@ -109,6 +102,19 @@ const deleteCustomerFailure = (errorObj)=>{
        type: types.DELETE_CUSTOMER_FAILURE,
        payload: errorObj
    }
+}
+
+//showing and hiding the customer form..
+const showOrHideForm = (visibilityMode)=>{
+    if (visibilityMode === 'SHOW') {
+        return {
+            type: types.SHOW_NEW_CUSTOMER_FORM
+        }
+    } else {
+        return{
+            type: types.HIDE_NEW_CUSTOMER_FORM
+        }  
+    }
 }
 
 //export these function

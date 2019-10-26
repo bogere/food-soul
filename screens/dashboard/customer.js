@@ -39,7 +39,7 @@ class Customer extends Component{
 
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
-      //console.log('accessing redux store', this.props.counter)
+      
       this.props.navigation.navigate('SingleCustomer', {item})
    }
 
@@ -65,7 +65,7 @@ class Customer extends Component{
                rightComponent={{ icon: 'home', color: '#fff' }}
              />
              {
-                this.props.showForm ?
+                this.props.showCustomerForm === true ?
                   <NewCustomer 
                      hideForm = {this.hideCustomerForm}
                      addNewCustomer = {this.addNewCustomer}
@@ -91,7 +91,7 @@ const mapStateToProps = (state)=>{
    return {
       customers: state.customerReducer.customers,
       errorResponse: state.customerReducer.errorResponse,
-      showForm:state.customerReducer.newCustomerForm
+      showCustomerForm:state.customerReducer.newCustomerForm
    }
 }
 
