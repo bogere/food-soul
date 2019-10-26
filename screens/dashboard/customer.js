@@ -72,7 +72,7 @@ class Customer extends Component{
                   />
                  :
                  <CustomerList 
-                     users = {this.props.customers}
+                     customers = {this.props.customers}
                      showForm = {this.showCustomerForm}
                      seeCustomerItem = {this.navigateCustomerItem}
                    />
