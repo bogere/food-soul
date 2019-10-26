@@ -25,7 +25,7 @@ class OrderList extends Component{
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
                       buttonStyle={styles.foodButton}
-                      title='Add Order' 
+                      title='New Order' 
                       onPress = {this.props.showForm}/>
           </Card>
         )

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import t from 'tcomb-form-native'
+import styles from '../constants/styles'
 
 
 const Form = t.form.Form;
@@ -74,7 +75,7 @@ class AddOrder extends Component{
     render(){
       return (
           <View>
-              <Card title = "ADD ORDER">
+              <Card title = "NEW CUSTOMER ORDER">
                 <Form
                    ref = "OrderForm"
                    type = {OrderModel}
@@ -85,7 +86,7 @@ class AddOrder extends Component{
                  <Button
                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
-                      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                      buttonStyle={styles.foodButton}
                       title='ADD ORDER' 
                      onPress = {this.submitOrder}/>
               </Card>
