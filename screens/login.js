@@ -44,8 +44,9 @@ class Login extends Component{
         let self = this
         var value = self.refs.myForm.getValue()
         if(value){
-          console.log('yeah u can now login', value)
+          //console.log('yeah u can now login', value)
            self.props.userLoginFetch(value)
+            
           //navigate to the dashboard page.. if login is successful
           /*if (self.props.authenticated === true) {
             self.props.navigation.navigate('Dashboard') 

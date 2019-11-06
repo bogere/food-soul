@@ -6,7 +6,8 @@ import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
 import {
          fetchCustomerDetails,addCustomerDetail,
-         deleteCustomerDetail,toggleCustomerForm
+         deleteCustomerDetail,toggleCustomerForm,
+         fetchStaticCustomers
        } 
       from '../../actions/customerActions'
 
@@ -25,7 +26,9 @@ class Customer extends Component{
    }
 
    componentDidMount(){
-         this.props.fetchCustomerDetails()
+         //this.props.fetchCustomerDetails("agent1")
+         //static data for teh customers.
+         this.props.fetchStaticCustomers()
    }
 
    showCustomerForm = () =>{
@@ -103,5 +106,6 @@ const mapStateToProps = (state)=>{
 
 export default  connect(mapStateToProps, {
    fetchCustomerDetails,addCustomerDetail,
-   deleteCustomerDetail, toggleCustomerForm
+   deleteCustomerDetail, toggleCustomerForm,
+   fetchStaticCustomers
 })(Customer)

@@ -1,12 +1,13 @@
 //Action creators for Authentication..
 import  * as types from './action_types'
 import {ROOT_API} from './constants'
+import {customers} from '../constants/sampleData'
 
 
 //fetch the customer details from server.
 const fetchCustomerDetails = (agentId)=>{
     return dispatch =>{
-        return fetch(`${ROOT_API}/api/customers/${agentId}`)
+        return fetch(`${ROOT_API}/mobile/customers/${agentId}`)
                 .then(response => response.json())
                 .then(data =>{
                     dispatch(fetchCustomerSuccess(data)) 
@@ -20,7 +21,7 @@ const fetchCustomerDetails = (agentId)=>{
 //add the customer via the API call.
 const addCustomerDetail = (newCustomer)=>{
    return dispatch=>{
-       return fetch(`${ROOT_API}/customers`, {
+       return fetch(`${ROOT_API}/customers/${newCustomer.agentId}`, {
            method: 'post',
            headers: {
             "Content-Type": "application/json",
@@ -59,6 +60,13 @@ const toggleCustomerForm = (visibilityMode)=>{
    return dispatch =>{
        dispatch(showOrHideForm(visibilityMode))
    }
+}
+
+//dealing with static data for the customers.
+const fetchStaticCustomers = ()=>{
+    return dispatch =>{
+       dispatch(staticCustomerData(customers))
+    }
 }
 
 //action types.
@@ -104,6 +112,14 @@ const deleteCustomerFailure = (errorObj)=>{
    }
 }
 
+//static data for customers.
+const staticCustomerData = (customerList)=>{
+    return {
+        type: types.FETCH_CUSTOMERS_STATIC,
+        payload:customerList
+    }
+}
+
 //showing and hiding the customer form..
 const showOrHideForm = (visibilityMode)=>{
     if (visibilityMode === 'SHOW') {
@@ -122,5 +138,6 @@ export{
     fetchCustomerDetails,
     addCustomerDetail,
     deleteCustomerDetail,
-    toggleCustomerForm
+    toggleCustomerForm,
+    fetchStaticCustomers
 }
