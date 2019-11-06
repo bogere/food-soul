@@ -8,14 +8,14 @@ class OrderList extends Component{
         return (
             <Card title="Customer Orders">
               {
-                this.props.users.map((u, i) => {
+                this.props.orders.map((order, i) => {
                   return (
                     <ListItem
                        key={i}
-                       leftAvatar={{ source: { uri: u.avatar_url } }}
-                       title={u.name}
-                       subtitle={u.subtitle}
-                       onPress = {()=>this.props.seeOrderItem(u)}
+                       leftAvatar={{ source: { uri: order.avatar_url } }}
+                       title={order.name}
+                       subtitle={order.subtitle}
+                       onPress = {()=>this.props.seeOrderItem(order)}
                        bottomDivider
                   />
                     );

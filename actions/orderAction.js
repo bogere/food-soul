@@ -1,6 +1,7 @@
 //Action creators for Authentication.. trigger for updating state in store
 import  * as types from './action_types'
 import {ROOT_API} from './constants'
+import {customers_orders} from '../constants/sampleData'
 
 //fetch the customer details from server.
 const fetchOrderDetails = (agentId)=>{
@@ -38,9 +39,9 @@ const addOrderDetail = (newOrder)=>{
 }
 
 //deletng the customer detail.
-const deleteCustomerDetail = (order)=>{
+const deleteOrderDetail = (order)=>{
     return dispatch =>{
-        return fetch(`${ROOT_API}/customers/${order.id}`,{
+        return fetch(`${ROOT_API}/orders/${order.id}`,{
             method: 'delete',
             headers:{
                 "Content-Type": "application/json" 
@@ -49,6 +50,13 @@ const deleteCustomerDetail = (order)=>{
         .then(response => response.json())
         .then(orderResponse => deleteCustomerSuccess(orderResponse))
         .catch(err=> deleteOrderFailure(err))
+    }
+}
+
+//fetching teh static orders data.
+const fetchStaticOrders = ()=>{
+    return dispatch =>{
+        dispatch(staticOrderData(customers_orders))
     }
 }
 
@@ -94,10 +102,18 @@ const deleteOrderFailure = (errorObj)=>{
        payload: errorObj
    }
 }
+//static data for customer orders.
+const staticOrderData = (orders)=>{
+   return{
+       type: types.ORDERS_STATIC_DATA,
+       payload: orders
+   }
+}
 
 //export these function
 export{
     fetchOrderDetails,
     addOrderDetail,
-    deleteOrderDetail
+    deleteOrderDetail,
+    fetchStaticOrders
 }

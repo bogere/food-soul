@@ -66,6 +66,12 @@ const customerReducer = (state = initialState, action)=>{
                  newCustomerForm: false
              }
              break;
+        case types.CUSTOMERS_STATIC_DATA:
+             return{
+                ...state,
+                customers: state.customers = action.payload
+             }
+             break;
         
         default:
            return state

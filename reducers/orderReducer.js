@@ -52,6 +52,12 @@ const orderReducer = (state = initialState, action)=>{
                 errorResponse: 'Failed to delete the customer order'
               }
               break;
+        case types.ORDERS_STATIC_DATA:
+             return{
+                 ...state,
+                 orders: state.orders = action.payload
+             }
+             break;
         default:
            return state
      }
