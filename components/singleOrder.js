@@ -10,15 +10,15 @@ const IMAGE_SIZE = SCREEN_WIDTH - 80;
 class singleOrder extends Component{
     render(){
         const {params} = this.props.navigation.state
-
+        console.log('single item',params)
         return(
             <Card title="Order Detail">
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-               <Text style = {styles.nameHeader}>{params.item.name}</Text>
+               <Text style = {styles.nameHeader}>{params.item.customer}</Text>
                <Image 
                  source = {{
-                   uri :'https://static.pexels.com/photos/428336/pexels-photo-428336.jpeg',
+                   uri : params.item.food_image
                }}
                style = {{
                    width: IMAGE_SIZE,

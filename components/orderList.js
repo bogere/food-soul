@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View,Image,TouchableHighlight} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
 import styles from '../constants/styles'
+const helloImage = require('../images/food/maize.jpg') 
 
 class OrderList extends Component{
     render(){
@@ -12,12 +13,12 @@ class OrderList extends Component{
                   return (
                     <ListItem
                        key={i}
-                       leftAvatar={{ source: { uri: order.avatar_url } }}
-                       title={order.name}
-                       subtitle={order.subtitle}
+                       leftAvatar={{ source: { uri: order.food_image } }}
+                       title={order.customer}
+                       subtitle={order.food_name}
                        onPress = {()=>this.props.seeOrderItem(order)}
                        bottomDivider
-                  />
+                    />
                     );
                  })
                }
