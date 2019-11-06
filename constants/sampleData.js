@@ -1,5 +1,4 @@
 //this is static data for food soul app.
-
 const customers = [
     {
         name: 'Amy Farha',
@@ -21,20 +20,26 @@ const customers = [
 //customers orders.
 const customers_orders =[
     {
-        name: 'Amy Farha',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-        subtitle: 'Vice President'
+        customer: 'Amy Farha',
+        food_image: '../images/food/beans.jpg',
+        food_name: 'beans'
       },
       {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
+        customer: 'Chris Jackson',
+        food_image: '../images/food/rice_stuff.jpg',
+        food_name: 'rice'
       },
       {
-        name: 'hello friend',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'student'
-      }
+        customer: 'frank app',
+        food_image:'../images/food/maize.jpg',
+        food_name: 'maize'
+      },
+      {
+        customer: 'ibra ',
+        food_image:'../images/food/potatoes.jpg',
+        food_name: 'potatoes'
+      },
+
 ]
 
 

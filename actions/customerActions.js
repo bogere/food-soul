@@ -115,7 +115,7 @@ const deleteCustomerFailure = (errorObj)=>{
 //static data for customers.
 const staticCustomerData = (customerList)=>{
     return {
-        type: types.FETCH_CUSTOMERS_STATIC,
+        type: types.CUSTOMERS_STATIC_DATA,
         payload:customerList
     }
 }
