@@ -39,8 +39,7 @@ class NewCustomer extends Component{
     }
 
 
-    submitNewCustomer(e){
-      e.preventDefault()
+    submitNewCustomer(){
       const value = this.refs.myForm.getValue();
       if (value) {
          //console.log('submit customer to form', value) 

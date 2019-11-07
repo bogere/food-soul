@@ -7,7 +7,7 @@ import NewCustomer from '../../components/addCustomer'
 import {
          fetchCustomerDetails,addCustomerDetail,
          deleteCustomerDetail,toggleCustomerForm,
-         fetchStaticCustomers
+         fetchStaticCustomers,addStaticCustomer
        } 
       from '../../actions/customerActions'
 
@@ -46,12 +46,17 @@ class Customer extends Component{
       this.props.navigation.navigate('SingleCustomer', {item})
    }
 
-   addNewCustomer = ()=>{
+   addNewCustomer = (customerDetail)=>{
+
+      let avatarNo = Math.floor((Math.random() * 100) + 1);
      const newCustomer = {
-        name: 'hello customers',
-        orders: 5
+         name: customerDetail.firstName,
+         avatar_url: `https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/${avatarNo}.jpg`,
+         subtitle: customerDetail.lastName
      }
-     this.props.addCustomerDetail(newCustomer)
+     //debugger
+     //this.props.addCustomerDetail(newCustomer) //online API.
+     this.props.addStaticCustomer(newCustomer)
    }
 
    removeCustomer = (customer)=>{
@@ -107,5 +112,5 @@ const mapStateToProps = (state)=>{
 export default  connect(mapStateToProps, {
    fetchCustomerDetails,addCustomerDetail,
    deleteCustomerDetail, toggleCustomerForm,
-   fetchStaticCustomers
+   fetchStaticCustomers,addStaticCustomer
 })(Customer)

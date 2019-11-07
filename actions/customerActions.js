@@ -39,6 +39,7 @@ const addCustomerDetail = (newCustomer)=>{
    }
 }
 
+
 //deletng the customer detail.
 const deleteCustomerDetail = (customer)=>{
     return dispatch =>{
@@ -68,6 +69,13 @@ const fetchStaticCustomers = ()=>{
        dispatch(staticCustomerData(customers))
     }
 }
+
+//add teh static data for new customer.
+const addStaticCustomer = (newCustomer)=>{
+    return dispatch=>{
+         dispatch(newCustomerSuccess(newCustomer))
+    }
+ }
 
 //action types.
 const fetchCustomerSuccess = (customers)=>{
@@ -139,5 +147,6 @@ export{
     addCustomerDetail,
     deleteCustomerDetail,
     toggleCustomerForm,
-    fetchStaticCustomers
+    fetchStaticCustomers,
+    addStaticCustomer
 }
