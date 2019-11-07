@@ -38,7 +38,7 @@ const addOrderDetail = (newOrder)=>{
    }
 }
 
-//deletng the customer detail.
+//deleting the customer detail.
 const deleteOrderDetail = (order)=>{
     return dispatch =>{
         return fetch(`${ROOT_API}/orders/${order.id}`,{
@@ -57,6 +57,13 @@ const deleteOrderDetail = (order)=>{
 const fetchStaticOrders = ()=>{
     return dispatch =>{
         dispatch(staticOrderData(customers_orders))
+    }
+}
+
+//adding teh static order.
+const addStaticOrder = (newOrder)=>{
+    return dispatch =>{
+       dispatch(newOrderSuccess(newOrder))
     }
 }
 
@@ -115,5 +122,6 @@ export{
     fetchOrderDetails,
     addOrderDetail,
     deleteOrderDetail,
-    fetchStaticOrders
+    fetchStaticOrders,
+    addStaticOrder
 }

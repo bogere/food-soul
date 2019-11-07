@@ -62,8 +62,11 @@ class AddOrder extends Component{
         // call getValue() to get the values of the form
         let value = this.refs.OrderForm.getValue()
         if (value) { //if validation fails, value will be null
-           console.log('validated values', value) 
+           //console.log('validated values', value)
+           this.props.addNewOrder(value)
+           this.props.hideForm() 
         }
+        
     }
 
     handleChange(value){

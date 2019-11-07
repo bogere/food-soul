@@ -7,7 +7,8 @@ import NewOrder from '../../components/addOrder';
 //actions for orders.
 import {
    fetchOrderDetails,addOrderDetail,
-   deleteOrderDetail,fetchStaticOrders
+   deleteOrderDetail,fetchStaticOrders,
+   addStaticOrder
 }  from '../../actions/orderAction'
 
 
@@ -43,6 +44,17 @@ class Order extends Component{
    navigateOrderItem(item){
       this.props.navigation.navigate('SingleOrder', {item})
    }
+
+   addNewOrderDetail = (newOrder)=>{
+        const newOrderDetail = {
+           customer: newOrder.customer_id,
+           food_image: 'yyy.jpg',
+           food_name: '4 kgs of food'
+        }
+
+        this.props.addStaticOrder(newOrderDetail)
+
+   }
    ///////////////////
     render(){
         return (
@@ -56,6 +68,7 @@ class Order extends Component{
                 this.state.newOrderForm ?
                   <NewOrder 
                      hideForm = {this.hideOrderForm}
+                     addNewOrder = {this.addNewOrderDetail}
                   />
                  :
                  <OrderList 
@@ -84,5 +97,6 @@ const mapStateToProps = (state)=>{
 
 export default connect( mapStateToProps,{
    fetchOrderDetails,addOrderDetail,
-   deleteOrderDetail,fetchStaticOrders
+   deleteOrderDetail,fetchStaticOrders,
+   addStaticOrder
 })(Order)
