@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
 import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
+import {createDrawerNavigator} from 'react-navigation'
 import {connect} from 'react-redux'
 import {logoutUser} from '../../actions/authActions'
 import styles from '../../constants/styles'
+//other components...
+//u shall put seperator navigation for dashboard.
+import CustomerScreen from '../../screens/dashboard/customer';
+//import SingleCustomer from './components/singleCustomer';
 
- class Dashboard extends Component {
+import OrderScreen from '../../screens/dashboard/order'
+//import SingleOrder from './components/singleOrder'
+import CatScreen from '../../screens/dashboard/cat'
+
+ /*class Dashboard extends Component {
 
     constructor(props){
         super(props)
@@ -82,14 +91,7 @@ import styles from '../../constants/styles'
   }
 };
 
-/*const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around'
-    }
-})*/
+
 
 const mapStateToProps = (state)=>{
    return{
@@ -99,4 +101,19 @@ const mapStateToProps = (state)=>{
 
 export default connect(mapStateToProps,{
   logoutUser
-})(Dashboard)
+})(Dashboard) */
+
+export default createDrawerNavigator(
+  {
+   Customers: CustomerScreen,
+   Orders:OrderScreen,
+   Cats:CatScreen
+  },
+  {
+    drawerBackgroundColor: 'rgba(255,255,255,.9)',
+    contentOptions: {
+      activeTintColor: '#fff',
+      activeBackgroundColor: '#6b52ae',
+    },
+  }
+);
