@@ -3,6 +3,7 @@ import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
 import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
 import {createDrawerNavigator} from 'react-navigation'
 import {connect} from 'react-redux'
+import SideMenu from '../../components/sideMenu/sideMenu'
 import {logoutUser} from '../../actions/authActions'
 import styles from '../../constants/styles'
 //other components...
@@ -110,10 +111,12 @@ export default createDrawerNavigator(
    Cats:CatScreen
   },
   {
-    drawerBackgroundColor: 'rgba(255,255,255,.9)',
+    /*drawerBackgroundColor: 'rgba(255,255,255,.9)',
     contentOptions: {
       activeTintColor: '#fff',
       activeBackgroundColor: '#6b52ae',
-    },
+    },*/
+    contentComponent: SideMenu,
+    drawerWidth:300
   }
 );
