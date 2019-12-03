@@ -23,7 +23,6 @@ class CustomerList extends Component{
                  })
                }
              <Button
-                     icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
                       buttonStyle={styles.foodButton}
                       title='Add Customer' 

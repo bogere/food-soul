@@ -15,22 +15,22 @@ import RegisterScreen from './screens/register'
 import DashboardScreen from './screens/dashboard/dashboard';
 
 //u shall put seperator navigation for dashboard.
-/*import CustomerScreen from './screens/dashboard/customer';
+import CustomerScreen from './screens/dashboard/customer';
 import SingleCustomer from './components/singleCustomer';
 
 import OrderScreen from './screens/dashboard/order'
 import SingleOrder from './components/singleOrder'
-import CatScreen from './screens/dashboard/cat' */
+//import CatScreen from './screens/dashboard/cat'
 
 
 export default createStackNavigator({
   Home: {screen: HomeScreen},
   Login : {screen: LoginScreen},
   Register : {screen: RegisterScreen},
-  Dashboard: {screen: DashboardScreen}
-  //Customers: {screen: CustomerScreen},
-  //SingleCustomer: {screen:SingleCustomer},
-  //Orders: {screen: OrderScreen},
-  //SingleOrder:{screen: SingleOrder},
+  Dashboard: {screen: DashboardScreen},
+  Customers: {screen: CustomerScreen},
+  SingleCustomer: {screen:SingleCustomer},
+  Orders: {screen: OrderScreen},
+  SingleOrder:{screen: SingleOrder}
   //Cats:{screen: CatScreen}
 })

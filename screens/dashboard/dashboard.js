@@ -15,7 +15,7 @@ import OrderScreen from '../../screens/dashboard/order'
 //import SingleOrder from './components/singleOrder'
 import CatScreen from '../../screens/dashboard/cat'
 
- /*class Dashboard extends Component {
+ class Dashboard extends Component {
 
     constructor(props){
         super(props)
@@ -77,14 +77,14 @@ import CatScreen from '../../screens/dashboard/cat'
              icon={<Icon name='code' color='#ffffff' />}
               backgroundColor='#03A9F4'
               buttonStyle={styles.foodButton}
-              title='Cats' 
-               onPress = {this.goToCats}/>
+              title='Suppliers' 
+               onPress = {this.goToOrders}/>
           <Button
              icon={<Icon name='code' color='#ffffff' />}
               backgroundColor='#03A9F4'
               buttonStyle={styles.foodButton}
-              title='Suppliers' 
-               onPress = {this.goToCats}/>
+              title='Insights' 
+               onPress = {this.goToOrders}/>
     </View>
       
       
@@ -102,21 +102,17 @@ const mapStateToProps = (state)=>{
 
 export default connect(mapStateToProps,{
   logoutUser
-})(Dashboard) */
+})(Dashboard)
 
-export default createDrawerNavigator(
+/*export default createDrawerNavigator(
   {
    Customers: CustomerScreen,
    Orders:OrderScreen,
    Cats:CatScreen
   },
   {
-    /*drawerBackgroundColor: 'rgba(255,255,255,.9)',
-    contentOptions: {
-      activeTintColor: '#fff',
-      activeBackgroundColor: '#6b52ae',
-    },*/
     contentComponent: SideMenu,
     drawerWidth:300
   }
 );
+*/

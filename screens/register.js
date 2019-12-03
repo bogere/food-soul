@@ -94,7 +94,6 @@ let options = {
                      options={options}
                   />
                   <Button
-                      icon={<Icon name='code' color='#ffffff' />}
                       backgroundColor='#03A9F4'
                       buttonStyle={styles.foodButton}
                       title='Register As AGENT' 

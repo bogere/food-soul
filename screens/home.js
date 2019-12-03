@@ -34,15 +34,13 @@ class Home extends Component{
                      The Prices are the same (even less at times)
                    </Text>
                   <Button
-                     icon={<Icon name='code' color='#ffffff' />}
-                      backgroundColor='#03A9F4'
-                      buttonStyle={ styles.foodButton}
+                      backgroundColor='#ff0000'
+                      buttonStyle={styles.foodButton}
                       title='Register As AGENT' 
                      onPress = {this.goToRegister.bind(this)}/>
                       
                   <Button
-                     icon={<Icon name='code' color='#ffffff' />}
-                      backgroundColor='#03A9F4'
+                      backgroundColor='#ff0000'
                       buttonStyle={styles.foodButton}
                       title='LOGIN ' 
                      onPress = {this.goToLogin.bind(this)}/>

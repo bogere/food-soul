@@ -58,11 +58,10 @@ class NewCustomer extends Component{
                      options = {options}
                    />
                   <Button
-                  icon={<Icon name='code' color='#ffffff' />}
-                  backgroundColor='#03A9F4'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                  title='ADD CUSTOMER ' 
-                   onPress = {this.submitNewCustomer}/>
+                    backgroundColor='#03A9F4'
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title='ADD CUSTOMER ' 
+                    onPress = {this.submitNewCustomer}/>
                </Card>
         </View>
         )
