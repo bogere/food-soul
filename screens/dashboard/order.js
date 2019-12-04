@@ -1,30 +1,16 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
-//import t from 'tcomb-form-native'
+import {connect} from 'react-redux'//connects React component with Redux store
 import OrderList from '../../components/orderList';
 import NewOrder from '../../components/addOrder';
+//actions for orders.
+import {
+   fetchOrderDetails,addOrderDetail,
+   deleteOrderDetail,fetchStaticOrders,
+   addStaticOrder
+}  from '../../actions/orderAction'
 
-const users = [
-    {
-       name: 'brynn',
-       avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-       subtitle: 'President',
-       email: 'goldsoft@gmail.com'
-    },
-    {
-      name: 'Chris Jackson',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-      subtitle: 'Vice Chairman',
-      email: 'yyyyy@gmail.com'
-    },
-    {
-      name: 'Amy Farha',
-      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-      subtitle: 'President',
-      email: 'xxxxVVVV@yahoo.com'
-    }
-   ]
 
 
 class Order extends Component{
@@ -40,6 +26,11 @@ class Order extends Component{
       this.navigateOrderItem = this.navigateOrderItem.bind(this)
    }
 
+   componentDidMount(){
+      this.props.fetchStaticOrders()
+   }
+
+
    showOrderForm(){
       this.setState({
          newOrderForm: true
@@ -52,6 +43,17 @@ class Order extends Component{
    }
    navigateOrderItem(item){
       this.props.navigation.navigate('SingleOrder', {item})
+   }
+
+   addNewOrderDetail = (newOrder)=>{
+        const newOrderDetail = {
+           customer: newOrder.customer_id,
+           food_image: 'yyy.jpg',
+           food_name: '4 kgs of food'
+        }
+
+        this.props.addStaticOrder(newOrderDetail)
+
    }
    ///////////////////
     render(){
@@ -66,10 +68,11 @@ class Order extends Component{
                 this.state.newOrderForm ?
                   <NewOrder 
                      hideForm = {this.hideOrderForm}
+                     addNewOrder = {this.addNewOrderDetail}
                   />
                  :
                  <OrderList 
-                     users = {users}
+                     orders = {this.props.orders}
                      showForm = {this.showOrderForm}
                      seeOrderItem = {this.navigateOrderItem}
                    />
@@ -82,4 +85,18 @@ class Order extends Component{
     }
 }
 
-export default  Order
+//// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state)=>{
+   // Redux Store --> Component
+   return {
+      orders: state.orderReducer.orders,
+      errorResponse: state.orderReducer.errorResponse,
+      showOrderForm:state.orderReducer.newOrderForm
+   }
+}
+
+export default connect( mapStateToProps,{
+   fetchOrderDetails,addOrderDetail,
+   deleteOrderDetail,fetchStaticOrders,
+   addStaticOrder
+})(Order)

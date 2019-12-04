@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text, View} from 'react-native';
+import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
+import {connect} from 'react-redux'
+import {userLoginFetch} from '../actions/authActions'
+import styles from '../constants/styles'
 
 const Form = t.form.Form
 // here we are: define your domain model
@@ -35,18 +38,22 @@ class Login extends Component{
           loggedIn: false
         }
      }
+      
 
-     handleInputText(e){
-        const {name, value} = e.target
-        this.setState({[name]: value})
-    }
-    loginAsAgent(e){
+    loginAsAgent = ()=>{
         let self = this
         var value = self.refs.myForm.getValue()
         if(value){
-          console.log('yeah u can now login', value)
+          //console.log('yeah u can now login', value)
+           self.props.userLoginFetch(value)
+            
           //navigate to the dashboard page.. if login is successful
-           self.props.navigation.navigate('Dashboard')
+          /*if (self.props.authenticated === true) {
+            self.props.navigation.navigate('Dashboard') 
+          } else {
+              Alert.alert("Invalid username/password")
+          }*/
+          self.props.navigation.navigate('Dashboard')
 
         }
     }
@@ -62,15 +69,25 @@ class Login extends Component{
                           options = {options}
                         />
                        <Button
-                       icon={<Icon name='code' color='#ffffff' />}
-                       backgroundColor='#03A9F4'
-                       buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                       title='LOGIN ' 
-                        onPress = {this.loginAsAgent.bind(this)}/>
+                        icon={<Icon name='code' color='#ffffff' />}
+                        backgroundColor='#03A9F4'
+                        buttonStyle={styles.foodButton}
+                        title='LOGIN ' 
+                        onPress = {this.loginAsAgent}/>
                 </Card>
              </View>
          )
      }
 }
 
-export default Login
+const mapStateToProps = (state)=>{
+   return{
+      authenticated: state.authReducer.authenticated,
+      loginError: state.authReducer.loginError,
+      networkFailure:state.authReducer.networkFailure
+   }
+}
+
+export default connect(mapStateToProps,{
+   userLoginFetch  
+})(Login)

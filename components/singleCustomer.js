@@ -18,7 +18,7 @@ class singleCustomer extends Component{
                <Text style = {styles.nameHeader}>{params.item.name}</Text>
                <Image 
                  source = {{
-                   uri :'https://static.pexels.com/photos/428336/pexels-photo-428336.jpeg',
+                   uri :params.item.avatar_url
                }}
                style = {{
                    width: IMAGE_SIZE,

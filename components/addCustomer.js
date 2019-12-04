@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet,Text,ScrollView,TouchableHighlight,Alert, View} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
-import {addCustomer} from '../services/customers'
 
 
 const Form = t.form.Form
@@ -40,22 +39,13 @@ class NewCustomer extends Component{
     }
 
 
-    submitNewCustomer(e){
-      e.preventDefault()
+    submitNewCustomer(){
       const value = this.refs.myForm.getValue();
       if (value) {
-         //console.log('submit customer to form', value)   
+         //console.log('submit customer to form', value) 
+         this.props.addNewCustomer(value)
+         this.props.hideForm() //  //later hide the customer form
       }
-
-      addCustomer(value)
-        .then(result=>{
-             console.log(result)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-      //later hide the customer form.
-      this.props.hideForm
     }
 
     /////////////////////
@@ -68,11 +58,10 @@ class NewCustomer extends Component{
                      options = {options}
                    />
                   <Button
-                  icon={<Icon name='code' color='#ffffff' />}
-                  backgroundColor='#03A9F4'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                  title='ADD CUSTOMER ' 
-                   onPress = {this.submitNewCustomer}/>
+                    backgroundColor='#03A9F4'
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title='ADD CUSTOMER ' 
+                    onPress = {this.submitNewCustomer}/>
                </Card>
         </View>
         )

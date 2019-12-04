@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
 import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements'
-//import t from 'tcomb-form-native'
+import {connect} from 'react-redux'//connects React component with Redux store
 import CustomerList from '../../components/customerList';
 import NewCustomer from '../../components/addCustomer'
-import {loadCustomers} from '../../services/customers'
-
+import {
+         fetchCustomerDetails,addCustomerDetail,
+         deleteCustomerDetail,toggleCustomerForm,
+         fetchStaticCustomers,addStaticCustomer
+       } 
+      from '../../actions/customerActions'
 
 
 
@@ -18,39 +22,47 @@ class Customer extends Component{
          customers:[]
       }
       //bind the fucntions in the constructor instead of render method.. optimisation.
-      this.showCustomerForm = this.showCustomerForm.bind(this)
-      this.hideCustomerForm = this.hideCustomerForm.bind(this)
       this.navigateCustomerItem = this.navigateCustomerItem.bind(this)
    }
 
    componentDidMount(){
-         loadCustomers()
-           .then(result=>{
-                console.log(result)
-                this.setState({
-                   customers:result.customers
-                })
-           })
-           .catch(err=>{
-             console.log(err)
-           })
+         //this.props.fetchCustomerDetails("agent1")
+         //static data for teh customers.
+         this.props.fetchStaticCustomers()
    }
 
-   showCustomerForm(){
-      this.setState({
-         newCustomerForm: true
-      })
+   showCustomerForm = () =>{
+       const visibilityMode = 'SHOW'
+       this.props.toggleCustomerForm(visibilityMode)
    }
-   hideCustomerForm(){
-      this.setState({
-         newCustomerForm: false
-      })
-      console.log('hey hide the customer form')
+   hideCustomerForm = ()=>{
+      const visibilityMode = 'HIDE'
+      this.props.toggleCustomerForm(visibilityMode)
    }
+
    navigateCustomerItem(item){
       console.log('let see specific customer', item)
+      
       this.props.navigation.navigate('SingleCustomer', {item})
    }
+
+   addNewCustomer = (customerDetail)=>{
+
+      let avatarNo = Math.floor((Math.random() * 100) + 1);
+     const newCustomer = {
+         name: customerDetail.firstName,
+         avatar_url: `https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/${avatarNo}.jpg`,
+         subtitle: customerDetail.lastName
+     }
+     //debugger
+     //this.props.addCustomerDetail(newCustomer) //online API.
+     this.props.addStaticCustomer(newCustomer)
+   }
+
+   removeCustomer = (customer)=>{
+       this.props.deleteCustomerDetail(customer)
+   }
+
    ///////////////////
     render(){
         return (
@@ -61,18 +73,19 @@ class Customer extends Component{
                rightComponent={{ icon: 'home', color: '#fff' }}
              />
              {
-                this.state.newCustomerForm ?
+                this.props.showCustomerForm === true ?
                   <NewCustomer 
                      hideForm = {this.hideCustomerForm}
+                     addNewCustomer = {this.addNewCustomer}
                   />
                  :
                  <CustomerList 
-                     users = {this.state.customers}
+                     customers = {this.props.customers}
                      showForm = {this.showCustomerForm}
                      seeCustomerItem = {this.navigateCustomerItem}
                    />
                }
-             
+
            </View>
 
              
@@ -80,4 +93,24 @@ class Customer extends Component{
     }
 }
 
-export default  Customer
+//// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state)=>{
+   // Redux Store --> Component
+   return {
+      customers: state.customerReducer.customers,
+      errorResponse: state.customerReducer.errorResponse,
+      showCustomerForm:state.customerReducer.newCustomerForm
+   }
+}
+
+// Map Dispatch To Props (Dispatch Actions To Reducers. Reducers
+//Then Modify The Data And Assign It To Your Props)
+//==> connects Redux action to React component props.
+
+
+
+export default  connect(mapStateToProps, {
+   fetchCustomerDetails,addCustomerDetail,
+   deleteCustomerDetail, toggleCustomerForm,
+   fetchStaticCustomers,addStaticCustomer
+})(Customer)
