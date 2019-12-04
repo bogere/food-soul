@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
      marginLeft: 10,
      marginRight: 10, 
-     marginBottom: 10
+     marginBottom: 10,
+     color:'#ff0000'
    },
    foodText:{
     fontSize: 18,
@@ -41,6 +42,9 @@ const styles = StyleSheet.create({
   social: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  viewContainer:{
+    backgroundColor:'#00ff00'
   }
   /*foodList:{ // user is not valid style property. the deep nested variables r not available
        user: {
