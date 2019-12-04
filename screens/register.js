@@ -88,6 +88,7 @@ let options = {
        return (
         <ScrollView>
               <View style={styles.registerContainer}>
+                <Card title = "REGISTER AGENT">
                  {/* display */}
                   <Form
                      ref="myForm"  type={Agent}
@@ -98,6 +99,7 @@ let options = {
                       buttonStyle={styles.foodButton}
                       title='Register As AGENT' 
                       onPress = {this.registerAgent}/>
+                </Card>
                </View>
         </ScrollView>
        )

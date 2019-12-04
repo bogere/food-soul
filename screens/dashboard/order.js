@@ -4,6 +4,8 @@ import { Card, ListItem, Button, Icon,Input, Header} from 'react-native-elements
 import {connect} from 'react-redux'//connects React component with Redux store
 import OrderList from '../../components/orderList';
 import NewOrder from '../../components/addOrder';
+import styles from '../../constants/styles'
+
 //actions for orders.
 import {
    fetchOrderDetails,addOrderDetail,
