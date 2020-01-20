@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text, View, Alert} from 'react-native';
+import {Platform, StyleSheet,Text, View, Alert, ImageBackground} from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
 import {connect} from 'react-redux'
@@ -62,20 +62,25 @@ class Login extends Component{
      ///////////////////
      render(){
          return(
-             <View>
-                 <Card  title = "WELCOME TO SOUL FOOD">
+            <ImageBackground
+                source={require('../images/background/ocean_sky.jpg')}
+                style={{ flex: 1,
+                       width: null,
+                       height: null,
+              }}>
+               <View style = {{margin:100, marginLeft:10, marginRight:10}}>
                        <Form ref = "myForm"
                           type = {Person}
                           options = {options}
                         />
                        <Button
-                        icon={<Icon name='code' color='#ffffff' />}
                         backgroundColor='#03A9F4'
                         buttonStyle={styles.foodButton}
                         title='LOGIN ' 
                         onPress = {this.loginAsAgent}/>
-                </Card>
-             </View>
+               </View>
+            </ImageBackground>
+            
          )
      }
 }

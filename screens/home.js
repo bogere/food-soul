@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text, View} from 'react-native';
+import {Platform, StyleSheet,Text, View, Image} from 'react-native';
 import { Card, ListItem, Button, Icon,Divider} from 'react-native-elements'
 import styles from '../constants/styles'
 

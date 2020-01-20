@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet,Text,ScrollView,TouchableHighlight,Alert, View} from 'react-native';
+import {
+  Platform, StyleSheet,Text,ScrollView,
+  TouchableHighlight,Alert,View, ImageBackground} 
+  from 'react-native';
 import { Card, ListItem, Button, Icon,Input } from 'react-native-elements'
 import t from 'tcomb-form-native'
 import {connect} from 'react-redux'
@@ -87,8 +90,13 @@ let options = {
        }*/
        return (
         <ScrollView>
-              <View style={styles.registerContainer}>
-                <Card title = "REGISTER AGENT">
+            <ImageBackground
+                source={require('../images/background/ocean_sky.jpg')}
+                style={{ flex: 1,
+                       width: null,
+                       height: null,
+              }}>
+              <View style = {{margin:100, marginLeft:10, marginRight:10}}>
                  {/* display */}
                   <Form
                      ref="myForm"  type={Agent}
@@ -99,8 +107,8 @@ let options = {
                       buttonStyle={styles.foodButton}
                       title='Register As AGENT' 
                       onPress = {this.registerAgent}/>
-                </Card>
                </View>
+            </ImageBackground>
         </ScrollView>
        )
    }

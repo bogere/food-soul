@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View,Text, Image } from 'react-native';
+import { AppRegistry, StyleSheet, View,Text, Image, ImageBackground } from 'react-native';
 import { Card, Button, Icon,Input, Header,Divider} from 'react-native-elements'
 import {createDrawerNavigator} from 'react-navigation'
 import {connect} from 'react-redux'
@@ -59,34 +59,40 @@ import CatScreen from '../../screens/dashboard/cat'
     return (
       // Try setting `justifyContent` to `center`.
       // Try setting `flexDirection` to `row`.
-    <View>
-        <Button
-             icon={<Icon name='code' color='#ffffff' />}
-              backgroundColor='#03A9F4'
-              buttonStyle={styles.foodButton}
-              title='Customers' 
-               onPress = {this.goToCustomers}/>
+        <ImageBackground
+            source={require('../../images/background/ocean_sky.jpg')}
+            style={{ flex: 1,
+              width: null,
+              height: null,
+         }}>
+           <View>
+              <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                buttonStyle={styles.foodButton}
+                title='Customers' 
+                onPress = {this.goToCustomers}/>
                <Divider style={{ backgroundColor: 'blue' }} />
-          <Button
-             icon={<Icon name='code' color='#ffffff' />}
-              backgroundColor='#03A9F4'
-              buttonStyle={styles.foodButton}
-              title='Orders' 
-               onPress = {this.goToOrders}/>
-          <Button
-             icon={<Icon name='code' color='#ffffff' />}
-              backgroundColor='#03A9F4'
-              buttonStyle={styles.foodButton}
-              title='Suppliers' 
-               onPress = {this.goToOrders}/>
-          <Button
-             icon={<Icon name='code' color='#ffffff' />}
-              backgroundColor='#03A9F4'
-              buttonStyle={styles.foodButton}
-              title='Insights' 
-               onPress = {this.goToOrders}/>
-    </View>
-      
+               <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                buttonStyle={styles.foodButton}
+                title='Orders' 
+                onPress = {this.goToOrders}/>
+               <Button
+                icon={<Icon name='code' color='#ffffff' />}
+                backgroundColor='#03A9F4'
+                buttonStyle={styles.foodButton}
+                title='Suppliers' 
+                onPress = {this.goToOrders}/>
+               <Button
+                 icon={<Icon name='code' color='#ffffff' />}
+                 backgroundColor='#03A9F4'
+                 buttonStyle={styles.foodButton}
+                 title='Insights' 
+                  onPress = {this.goToOrders}/>
+            </View>
+        </ImageBackground>  
       
     );
   }

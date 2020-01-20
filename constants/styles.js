@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
      marginLeft: 10,
      marginRight: 10, 
      marginBottom: 10,
-     backgroundColor:'#009966'
+     backgroundColor:'#03A9F4'
    },
    foodText:{
     fontSize: 18,
