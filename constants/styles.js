@@ -10,6 +10,14 @@ const styles = StyleSheet.create({
      marginBottom: 10,
      backgroundColor:'#03A9F4'
    },
+   foodButtonDash:{
+     borderRadius:100,
+     /*marginLeft: 10,
+     marginRight: 10, 
+     marginBottom: 10, */
+     margin:10,
+     backgroundColor:'#03A9F4'
+   },
    foodText:{
     fontSize: 18,
     textAlign: 'center',
@@ -20,6 +28,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 50,
     padding: 20
+  },
+  iconBox:{
+    width:30,
+    height:30,
+    marginBottom:10
   },
   user: {
     flexDirection: 'row',

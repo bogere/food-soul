@@ -15,6 +15,13 @@ import OrderScreen from '../../screens/dashboard/order'
 //import SingleOrder from './components/singleOrder'
 import CatScreen from '../../screens/dashboard/cat'
 
+const iconBoxArray = [
+  {title: 'Customers', iconUrl: require('../../images/icons/customer.png') },
+  {title: 'Orders', iconUrl: require('../../images/icons/orders.png')},
+  {title: 'Suppliers', iconUrl: require('../../images/icons/customer.png')},
+  {title: 'Insights', iconUrl: require('../../images/icons/dashboard.png')}
+]
+
  class Dashboard extends Component {
 
     constructor(props){
@@ -65,31 +72,27 @@ import CatScreen from '../../screens/dashboard/cat'
               width: null,
               height: null,
          }}>
-           <View>
-              <Button
-                icon={<Icon name='code' color='#ffffff' />}
-                backgroundColor='#03A9F4'
-                buttonStyle={styles.foodButton}
-                title='Customers' 
-                onPress = {this.goToCustomers}/>
-               <Divider style={{ backgroundColor: 'blue' }} />
-               <Button
-                icon={<Icon name='code' color='#ffffff' />}
-                backgroundColor='#03A9F4'
-                buttonStyle={styles.foodButton}
-                title='Orders' 
-                onPress = {this.goToOrders}/>
-               <Button
-                icon={<Icon name='code' color='#ffffff' />}
-                backgroundColor='#03A9F4'
-                buttonStyle={styles.foodButton}
-                title='Suppliers' 
-                onPress = {this.goToOrders}/>
-               <Button
-                 icon={<Icon name='code' color='#ffffff' />}
-                 backgroundColor='#03A9F4'
-                 buttonStyle={styles.foodButton}
-                 title='Insights' 
+           <View style = {{margin:200, marginLeft:10, marginRight:10, flex:1}}>
+                <Button
+                  backgroundColor='#03A9F4'
+                  buttonStyle={styles.foodButtonDash}
+                  title='Customers' 
+                  onPress = {this.goToCustomers}/>
+                 <Divider style={{ backgroundColor: 'blue' }} />
+                <Button
+                  backgroundColor='#03A9F4'
+                  buttonStyle={styles.foodButtonDash}
+                  title='Orders' 
+                  onPress = {this.goToOrders}/>
+                <Button
+                  backgroundColor='#03A9F4'
+                  buttonStyle={styles.foodButtonDash}
+                  title='Suppliers' 
+                  onPress = {this.goToOrders}/>
+                <Button
+                  backgroundColor='#03A9F4'
+                  buttonStyle={styles.foodButtonDash}
+                  title='Insights' 
                   onPress = {this.goToOrders}/>
             </View>
         </ImageBackground>  
