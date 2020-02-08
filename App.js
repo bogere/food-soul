@@ -21,7 +21,7 @@ import SingleCustomer from './components/singleCustomer';
 import OrderScreen from './screens/dashboard/order'
 import SingleOrder from './components/singleOrder'
 //import CatScreen from './screens/dashboard/cat'
-import GalioScreen from './components/galio_parts/home'
+import GalioScreen from './components/galio_parts/login'
 
 
 export default createStackNavigator({

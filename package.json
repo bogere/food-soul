@@ -2,6 +2,12 @@
   "name": "food",
   "version": "0.0.1",
   "private": true,
+  "files": [
+    "*.js",
+    "helpers/*.js",
+    "assets/fonts/galio.json",
+    "assets/fonts/galio.ttf"
+  ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
