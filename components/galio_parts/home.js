@@ -5,7 +5,9 @@ import {
     Block, Button, Input, NavBar, Text,
   } from 'galio-framework';
 
-  const { width,height } = Dimensions.get('screen');
+  import theme from './theme';
+
+const { width,height } = Dimensions.get('screen');
 
 
 class StarterScreen extends Component{
