@@ -21,6 +21,7 @@ import SingleCustomer from './components/singleCustomer';
 import OrderScreen from './screens/dashboard/order'
 import SingleOrder from './components/singleOrder'
 //import CatScreen from './screens/dashboard/cat'
+import GalioScreen from './components/galio_parts/home'
 
 
 export default createStackNavigator({
@@ -31,6 +32,7 @@ export default createStackNavigator({
   Customers: {screen: CustomerScreen},
   SingleCustomer: {screen:SingleCustomer},
   Orders: {screen: OrderScreen},
-  SingleOrder:{screen: SingleOrder}
+  SingleOrder:{screen: SingleOrder},
   //Cats:{screen: CatScreen}
+  Galio:{screen: GalioScreen }
 })

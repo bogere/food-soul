@@ -15,6 +15,7 @@ import OrderScreen from '../../screens/dashboard/order'
 //import SingleOrder from './components/singleOrder'
 import CatScreen from '../../screens/dashboard/cat'
 
+
 const iconBoxArray = [
   {title: 'Customers', iconUrl: require('../../images/icons/customer.png') },
   {title: 'Orders', iconUrl: require('../../images/icons/orders.png')},
@@ -56,6 +57,10 @@ const iconBoxArray = [
       this.props.logoutUser()
     }
 
+    goToGalio = ()=>{
+      this.props.navigation.navigate('Galio');
+    }
+
     //////////////////////////////////////
   render() {
     
@@ -94,6 +99,11 @@ const iconBoxArray = [
                   buttonStyle={styles.foodButtonDash}
                   title='Insights' 
                   onPress = {this.goToOrders}/>
+                  <Button
+                   backgroundColor='#03A9F4'
+                   buttonStyle={styles.foodButtonDash}
+                   title='Galio' 
+                   onPress = {this.goToGalio}/>  
             </View>
         </ImageBackground>  
       

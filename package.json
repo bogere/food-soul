@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "create-react-class": "^15.6.3",
+    "galio-framework": "^0.6.3",
     "react": "16.8.3",
     "react-native": "0.59.3",
     "react-native-elements": "^1.1.0",
