@@ -5,7 +5,8 @@ import {
     Block, Button, Input, NavBar, Text,
   } from 'galio-framework';
 
-  import theme from './theme';
+import theme from './theme';
+import styles from './galio_style';
 
 const { width,height } = Dimensions.get('screen');
 
@@ -41,7 +42,7 @@ class LoginScreen extends Component{
                           type="email-address"
                           placeholder="Email"
                           autoCapitalize="none"
-                          style={{ width: width  }}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('email', text)}
                         />
                         <Input
@@ -49,7 +50,7 @@ class LoginScreen extends Component{
                           password
                           viewPass
                           placeholder="Password"
-                          style={{ width: width}}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('password', text)}
                          />
                         <Text

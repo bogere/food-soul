@@ -5,12 +5,14 @@ import {
     Block, Button, Input, NavBar, Text,
   } from 'galio-framework';
 
-  import theme from './theme';
+import theme from './theme';
+import styles from './galio_style';
 
 const { width,height } = Dimensions.get('screen');
 
 
-class LoginScreen extends Component{
+
+class RegisterScreen extends Component{
 
     state = {
         email: '-',
@@ -41,7 +43,7 @@ class LoginScreen extends Component{
                           type="text"
                           placeholder="First Name"
                           autoCapitalize="none"
-                          style={{ width: width  }}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('email', text)}
                         />
                         <Input
@@ -49,7 +51,7 @@ class LoginScreen extends Component{
                           type="text"
                           placeholder="Last Name"
                           autoCapitalize="none"
-                          style={{ width: width  }}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('email', text)}
                         />
                         <Input
@@ -57,7 +59,7 @@ class LoginScreen extends Component{
                           type="email-address"
                           placeholder="Email"
                           autoCapitalize="none"
-                          style={{ width: width  }}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('email', text)}
                         />
                         <Input
@@ -65,7 +67,7 @@ class LoginScreen extends Component{
                           password
                           viewPass
                           placeholder="Password"
-                          style={{ width: width}}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('password', text)}
                          />
                          <Input
@@ -73,7 +75,7 @@ class LoginScreen extends Component{
                           password
                           viewPass
                           placeholder="Confirm Password"
-                          style={{ width: width}}
+                          style={styles.input}
                           onChangeText={text => this.handleChange('password', text)}
                          />
                          
@@ -98,15 +100,5 @@ class LoginScreen extends Component{
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingTop: theme.SIZES.BASE * 0.3,
-        paddingHorizontal: theme.SIZES.BASE,
-        backgroundColor: theme.COLORS.WHITE,
-      }
-  });
 
-export default LoginScreen 
+export default RegisterScreen 
