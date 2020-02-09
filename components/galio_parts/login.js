@@ -8,6 +8,7 @@ import {
 import theme from './theme';
 import styles from './galio_style';
 
+
 const { width,height } = Dimensions.get('screen');
 
 

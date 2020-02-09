@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet,Dimensions} from 'react-native'
+import theme from './theme'
+
+const {height,width} = Dimensions.get('screen');
 //handle teh appearance for our app
 
 const styles = StyleSheet.create({
