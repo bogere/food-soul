@@ -63,7 +63,7 @@ class LoginScreen extends Component{
                     </Block>
                     <Block flex middle>
                         <Button
-                          round  color="error"
+                          round  color="primary"
                           onPress={() => Alert.alert('Sign in action',`Email: ${email} Password: ${password}`)}
                         >
                            Sign in

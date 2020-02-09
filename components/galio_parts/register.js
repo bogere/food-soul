@@ -80,13 +80,13 @@ class LoginScreen extends Component{
                     </Block>
                     <Block flex middle>
                         <Button
-                          round  color="error"
+                          round  color="primary"
                           onPress={() => Alert.alert('Sign in action',`Email: ${email} Password: ${password}`)}
                         >
                            Create Account
                        </Button>
                        <Button color="transparent" shadowless onPress={() => navigation.navigate('Register')}>
-                            <Text center color={theme.COLORS.ERROR} size={theme.SIZES.FONT}>
+                            <Text center color={theme.COLORS.PRIMARY} size={theme.SIZES.FONT}>
                               {"Already have an account?  Login"}
                             </Text>
                         </Button>
