@@ -83,6 +83,7 @@ class RegisterScreen extends Component{
                     <Block flex middle>
                         <Button
                           round  color="primary"
+                          uppercase size = "large"
                           onPress={() => Alert.alert('Sign in action',`Email: ${email} Password: ${password}`)}
                         >
                            Create Account
